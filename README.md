@@ -31,6 +31,7 @@ As a user i can post my item in Buyers tab, sothat i can get buy my stuffs easie
 As a user i can post my travel plan in Helpers tab, sothat i can help people buy stuffs and get more income
 * User can post new travel plan by goto Helpers tab and fill forms with details: Country you can buy stuff, and Return date to VietNam
 * After submiting user can be redirected to search page with filter as same country when they post there trip
+* User should be notified by messages in Messages tab, for all the post related to same country.
 
 ### User story 4
 As a user i can see status of my item, sothat i can keep track of them
