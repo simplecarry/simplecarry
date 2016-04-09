@@ -16,7 +16,9 @@ As a user i can View/Signup/Signin to the app. So that i can start using the app
 * User can not use Buyers tab and Helpers tab until they signup/login
 * User can Signup, Signin and redirected to Search page
 * User can see many item listed here with status
-* User can click on item to see details (Buyers, Name, picture, link, description)
+* User can click on item to see details (Buyers, Name, picture, link, description, status)
+* Buyers can "Delete" there item from here by clicking "Delete" button
+* Helper can click "Offer to help" button and fill in a form: Carry price, Return date to VietNam
 
 ### User story 2
 As a user i can post my item in Buyers tab, sothat i can get buy my stuffs easier and cheaper.
