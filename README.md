@@ -24,13 +24,12 @@ As a user i can post my item in Buyers tab, sothat i can get buy my stuffs easie
 * Collection method should be 2 options (pickup and courier), tooltips for Price willing to pay: "This price is included retail price and tips for Helpers", tooltips for service fee: "2$ + 5% of item's price".
 * User can go back to previous action before clicking submit button.
 * User submit post and it should be appeared in search page.
-* 
 
 ### User story 3
 As a user i can post my travel plan in Helpers tab, sothat i can help people buy stuffs and get more income
 * User can post new travel plan by goto Helpers tab and fill forms with details: Country you can buy stuff, and Return date to VietNam
 * After submiting user can be redirected to search page with filter as same country when they post there trip
-* 
+
 ### User story 4
 As a user i can see status of my item, sothat i can keep track of them
 * https://docs.google.com/spreadsheets/d/1RXqzNGyF0MiYs995yNG0tkUpFRB_tgcPHtnNA9GzmwI/edit?usp=sharing
@@ -41,7 +40,6 @@ As a user i can see messages whenever the item change status, sothat i can be no
 * If status is change to Pending: Buyers have options "Process deposit" and "Reject", Helpers have one option is "Cancel"
 ** If select "Process deposit" user have to fill in a payment form: payment method is credit card (card number, name, expired date, CVC).
 * If status is change to Confirmed: Helper have options "Comfirmed" or "Cancel"
-
 
 
 ## Notes
