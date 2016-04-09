@@ -8,19 +8,30 @@ URL: ** **
 
 The following **required** functionality is complete:
 
-* [ ] Users can signup/signin as Buyers or Helpers
-* [ ] Users need to give details (Userame, email, phone, sex, buyers or helpers, how can we chat?(skype, slack, facebook...), where do they travel usually if they are helpers )
-* [ ] Buyers have to submit what they want to buy with details: Name, URL links, Descriptions
-* [ ] Buyers can see items that they have submitted and status (Pending, Confirmed, Buying, Arrived, Completed)
-* [ ] Helpers can see the list of items with status Pending, click on item thay can see details (Buyer's Username, item's links, item's name, Descripions, simplecarry's support details)
-* [ ] Helpers can click "Help" to take care that item, email will be sent to both sides, item should change status to comfirmed incase they can't deal, Buyers can restore the status back to Pending
-* [ ] Helpers and Buyers can chat buy clicking on Username
+### User story 1
+As a user i can View/Signup/Signin to the app. So that i can start using the app 
+* First glance of the web should be homepage with name/slogan/pictures
+* User can see Search tab, Buyers tab, Helpers tab
+* User can search by where, what need to be brought
+* User can not use Buyers tab and Helpers tab until they signup/login
+* User can Signup, Signin and redirected to Search page
 
-### Optional Stories
+### User story 2
+As a user i can post my item in Buyers tab, sothat i can get buy my stuffs easier and cheaper.
+* User can post new item in Buyers tab buy filling item form (Item name, links, picture, descriptions), location form (where to buy this item, how to collect item), price form (Price willing to pay, service fee (2$ + 5% of item's price), total price).
+* Collection method should be 2 options (pickup and courier), tooltips for Price willing to pay: "This price is included retail price and tips for Helpers", tooltips for service fee: "2$ + 5% of item's price".
+* User can go back to previous action before clicking submit button.
+* User submit post and it should be appeared in search page.
+* User can rate the helpers
 
-* [ ] Admin role and Admin page having tool to support customers: Items management, Users management
-* [ ] Admin can change status to Arrived/ Complete, email will be sent to both side, status change arcodingly
-* [ ] Chat notification
+### User story 3
+As a user i can post my travel plan in Helpers tab, sothat i can help people buy stuffs and get more income
+* User can post new travel plan by goto Helpers tab and fill forms with details: Country you can buy stuff, and Return date to VietNam
+* After submiting user can be redirected to search page with filter as same country when they post there trip
+
+### User story 4
+As a Buyer i want to see status of my item, sothat i can keep track of them
+* https://docs.google.com/spreadsheets/d/1RXqzNGyF0MiYs995yNG0tkUpFRB_tgcPHtnNA9GzmwI/edit?usp=sharing
 
 ## Notes
 
