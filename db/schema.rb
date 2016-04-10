@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410110749) do
+ActiveRecord::Schema.define(version: 20160410130159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,13 +31,25 @@ ActiveRecord::Schema.define(version: 20160410110749) do
 
   add_index "locations", ["name"], name: "index_locations_on_name", using: :btree
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "request_id"
+    t.string   "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["request_id"], name: "index_messages_on_request_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
   create_table "offers", force: :cascade do |t|
-    t.integer  "carrier_id",   null: false
-    t.integer  "price",        null: false
-    t.date     "arrival_date", null: false
-    t.integer  "requests_id",  null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "carrier_id",               null: false
+    t.integer  "price",                    null: false
+    t.date     "arrival_date",             null: false
+    t.integer  "requests_id",              null: false
+    t.integer  "status",       default: 0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "requests", force: :cascade do |t|
@@ -59,6 +71,16 @@ ActiveRecord::Schema.define(version: 20160410110749) do
   add_index "requests", ["description"], name: "index_requests_on_description", using: :btree
   add_index "requests", ["name"], name: "index_requests_on_name", using: :btree
 
+  create_table "travel_plans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "country",     null: false
+    t.datetime "return_date", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "travel_plans", ["user_id"], name: "index_travel_plans_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -77,8 +99,11 @@ ActiveRecord::Schema.define(version: 20160410110749) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "messages", "requests"
+  add_foreign_key "messages", "users"
   add_foreign_key "requests", "locations", column: "delivery_location_id"
   add_foreign_key "requests", "locations", column: "selling_location_id"
   add_foreign_key "requests", "offers", column: "selected_offer_id"
   add_foreign_key "requests", "users", column: "requester_id"
+  add_foreign_key "travel_plans", "users"
 end
