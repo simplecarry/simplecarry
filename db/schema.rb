@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20160410130159) do
   add_index "locations", ["name"], name: "index_locations_on_name", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "request_id"
+    t.integer  "user_id",    null: false
+    t.integer  "request_id", null: false
     t.string   "content",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20160410130159) do
   add_index "requests", ["name"], name: "index_requests_on_name", using: :btree
 
   create_table "travel_plans", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
     t.string   "country",     null: false
     t.datetime "return_date", null: false
     t.datetime "created_at",  null: false
