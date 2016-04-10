@@ -3,7 +3,7 @@ class CreateRequests < ActiveRecord::Migration
     create_table :requests do |t|
       t.string :name, null: false
       t.text :description
-      t.references :delivery_methods
+      t.references :delivery_method
       t.string :picture_url
       t.integer :offer_price, null: false
       t.integer :quantity, default: 1, null: false

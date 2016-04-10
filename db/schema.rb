@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20160410130159) do
     t.integer  "carrier_id",               null: false
     t.integer  "price",                    null: false
     t.date     "arrival_date",             null: false
-    t.integer  "requests_id",              null: false
+    t.integer  "request_id",               null: false
     t.integer  "status",       default: 0, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20160410130159) do
   create_table "requests", force: :cascade do |t|
     t.string   "name",                             null: false
     t.text     "description"
-    t.integer  "delivery_methods_id"
+    t.integer  "delivery_method_id"
     t.string   "picture_url"
     t.integer  "offer_price",                      null: false
     t.integer  "quantity",             default: 1, null: false

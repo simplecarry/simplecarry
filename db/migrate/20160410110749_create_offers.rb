@@ -4,7 +4,7 @@ class CreateOffers < ActiveRecord::Migration
       t.integer :carrier_id, null: false
       t.integer :price, null: false
       t.date :arrival_date, null: false
-      t.references :requests, null: false
+      t.references :request, null: false
       t.integer :status, default: 0, null: false
       t.timestamps null: false
     end
