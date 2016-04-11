@@ -4,12 +4,9 @@ class Offer < ActiveRecord::Base
 
   validates :carrier, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :status, presence: true
   validates :arrival_date, presence: true
 
-  STATUS = ['Open', 'Pending', 'Confirmed', 'Accepted', 'Arrived', 'Completed']
-
-  def status index
-    STATUS[index]
+  def status?
+    request.status?
   end
 end

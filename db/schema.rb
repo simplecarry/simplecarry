@@ -43,13 +43,12 @@ ActiveRecord::Schema.define(version: 20160410130159) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "offers", force: :cascade do |t|
-    t.integer  "carrier_id",               null: false
-    t.integer  "price",                    null: false
-    t.date     "arrival_date",             null: false
-    t.integer  "request_id",               null: false
-    t.integer  "status",       default: 0, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "carrier_id",   null: false
+    t.integer  "price",        null: false
+    t.date     "arrival_date", null: false
+    t.integer  "request_id",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "requests", force: :cascade do |t|
@@ -101,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160410130159) do
 
   add_foreign_key "messages", "requests"
   add_foreign_key "messages", "users"
+  add_foreign_key "offers", "users", column: "carrier_id"
   add_foreign_key "requests", "locations", column: "delivery_location_id"
   add_foreign_key "requests", "locations", column: "selling_location_id"
   add_foreign_key "requests", "offers", column: "selected_offer_id"

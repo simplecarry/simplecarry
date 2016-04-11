@@ -17,7 +17,7 @@ class Request < ActiveRecord::Base
   
   STATUS = ['Open', 'Pending', 'Confirmed', 'Accepted', 'Arrived', 'Completed']
 
-  def status index
-    STATUS[index]
+  def status?
+    STATUS[self[:status]]
   end
 end
