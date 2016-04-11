@@ -8,45 +8,38 @@ URL: ** **
 
 The following **required** functionality is complete:
 
-### User story 1
-As a user i can View/Signup/Signin to the app. So that i can start using the app 
-* First glance of the web should be homepage with name/slogan/pictures
-* User can see Search tab, Buyers tab, Helpers tab, Messages tab
-* User can search by where, what need to be brought
-* User can not use Buyers tab and Helpers tab until they signup/login
-* User can Signup, Signin and redirected to Search page
-* User can see many item listed here with status
-* User can click on item to see details (Buyers, Name, picture, link, description, status)
-* Buyers can "Delete" there item from here by clicking "Delete" button
-* Helper can click "Offer to help" button and fill in a form: Carry price, Return date to VietNam
-
-### User story 2
-As a user i can post my item in Buyers tab, sothat i can get buy my stuffs easier and cheaper.
-* User can post new item in Buyers tab buy filling item form (Item name, links, picture, descriptions), location form (where to buy this item, how to collect item), price form (Price willing to pay, service fee (2$ + 5% of item's price), total price).
-* Collection method should be 2 options (pickup and courier), tooltips for Price willing to pay: "This price is included retail price and tips for Helpers", tooltips for service fee: "2$ + 5% of item's price".
-* User can go back to previous action before clicking submit button.
-* User submit post and it should be appeared in search page.
-
-### User story 3
-As a user i can post my travel plan in Helpers tab, sothat i can help people buy stuffs and get more income
-* User can post new travel plan by goto Helpers tab and fill forms with details: Country you can buy stuff, and Return date to VietNam
-* After submiting user can be redirected to search page with filter as same country when they post there trip
-* User should be notified by messages in Messages tab, for all the post related to same country.
-
-### User story 4
-As a user i can see status of my item, sothat i can keep track of them
-* https://docs.google.com/spreadsheets/d/1RXqzNGyF0MiYs995yNG0tkUpFRB_tgcPHtnNA9GzmwI/edit?usp=sharing
-
-### User story 5
-As a user i can see messages whenever the item change status, sothat i can be notified and have actions
-* User get notification in Messages tab whenever the item change status, click on message user is redirected to the item detail page
-* If status is change to Pending: Buyers have options "Process deposit" and "Reject", Helpers have one option is "Cancel"
-** If select "Process deposit" user have to fill in a payment form: payment method is credit card (card number, name, expired date, CVC).
-* If status is change to Confirmed: Helper have options "Comfirmed" or "Cancel"
-
-
-## Notes
-
+* [ ] As a user, I can see the following static pages: home page with name/slogan/pictures AND search box, about us
+* [ ] As a user I can register/login/logout
+* [ ] As a user I am redirected to home page after login/register
+======
+* [ ] As an authenticated user, I can create a request
+    * [ ] Item info: name, links, picture, description
+    * [ ] Price: offer price, service fee (2$ + 5% of item's price), total price
+    * [ ] Location: where to buy this item, how to deliver item
+    * [ ] Status: Open (https://docs.google.com/spreadsheets/d/1RXqzNGyF0MiYs995yNG0tkUpFRB_tgcPHtnNA9GzmwI/edit?usp=sharing)
+* [ ] As an authenticated user, I can delete my own request
+* [ ] As an authenticated user, I can see a list of my requests
+* [ ] As an authenticated user, I can filter my requests by status/location
+======
+* [ ] As a user, I can search for requests by location/name/description/status
+* [ ] As a user, I can see an overview of requests:name, location, status, quantity
+* [ ] As a user, I can click on item to see details (requester, name, picture, link, description, status, quantity, offer price)
+======
+* [ ] As an authenticated user, I can make an offer on an open/pending request (carry price, delivery date)
+* [ ] As an authenticated user, I cancel my offer on a request
+* [ ] As an authenticated user, I cannot make an offer on my own requests
+* [ ] As an authenticated user, I accept 1 offer for my request
+* [ ] As an authenticated user, I reject an offer on my request
+* [ ] As an authenticated user, I can create my travel plan
+    * [ ] Location: where I will be
+    * [ ] Time: when I will be there
+======
+* [ ] As an authenticated user, I can send/receive message with my selected helper
+* [ ] As an authenticated user, I can receive system message when there is a new request in my travel plan
+* [ ] As an authenticated user, I can receive system message when my request changes status
+======
+* [ ] As an authenticated user, I can deposit money for my accepted request
+* [ ] As an authenticated user, I can receive money for my completed offer
 
 ## License
 
