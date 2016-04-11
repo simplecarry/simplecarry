@@ -1,2 +1,44 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar {
+  background-color: #4DB6AC;
+}
+
+.nav-item {
+  background: #80CBC4;
+}
+.nav-link {
+  color: white;
+}
+
+body {
+  background: #009688;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.body-container {
+  margin-top: 80px;
+}
+
+.slogan {
+  color: #E0F2F1;
+}
+
+.button-wrapper {
+  text-align: center;
+}
+
+.btn {
+  background: #80CBC4;
+  color: #009688;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 140px;
+  background-color: #4DB6AC;
+  width: 100%;
+}
