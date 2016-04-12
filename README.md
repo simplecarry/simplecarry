@@ -7,7 +7,7 @@ URL: ** **
 ## User Stories
 
 The following **required** functionality is complete:
-===Truc===
+===Truc trac===
 * [ ] As a user, I can see the following static pages: home page with name/slogan/pictures AND search box, about us
 * [ ] As a user I can register/login/logout
 * [ ] As a user I am redirected to home page after login/register
