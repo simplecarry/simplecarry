@@ -11,6 +11,7 @@ The following **required** functionality is complete:
 * [ ] As a user, I can see the following static pages: home page with name/slogan/pictures AND search box, about us
 * [ ] As a user I can register/login/logout
 * [ ] As a user I am redirected to home page after login/register
+
 ===Hieu khung===
 * [ ] As an authenticated user, I can create a request
     * [ ] Item info: name, links, picture, description
@@ -20,12 +21,14 @@ The following **required** functionality is complete:
 * [ ] As an authenticated user, I can delete my own request
 * [ ] As an authenticated user, I can see a list of my requests
 * [ ] As an authenticated user, I can filter my requests by status/location
+
 ===Hieu Khung map===
 * [ ] As a user, I can search for requests by location/name/description/status
 * [ ] As a user, I can click on item to see details (requester, name, picture, link, description, status, quantity, offer price)
 * [ ] As an authenticated user, I can create my travel plan
    * [ ] Location: where I will be
    * [ ] Time: when I will be there
+
 ===Kha di˜===
 * [ ] As an authenticated user, I can make an offer on an open request (carry price, delivery date)
 * [ ] As an authenticated user, I cancel my offer on a request
@@ -37,6 +40,7 @@ The following **required** functionality is complete:
 * [ ] As an authenticated user, I can send/receive message with my selected helper
 * [ ] As an authenticated user, I can receive system message when there is a new request in my travel plan
 * [ ] As an authenticated user, I can receive system message when my request changes status
+
 ===Huy===
 * [ ] As an authenticated user, I can deposit money for my accepted request
 * [ ] As an authenticated user, I can receive money for my completed offer
