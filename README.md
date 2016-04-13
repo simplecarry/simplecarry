@@ -15,7 +15,7 @@ The following **required** functionality is complete:
 ===Hieu khung===
 * [ ] As an authenticated user, I can create a request
     * [ ] Item info: name, links, picture, description
-    * [ ] Price: offer price, service fee (2$ + 5% of item's price), total price
+    * [ ] Price: user input their price that they willing to pay.
     * [ ] Location: where to buy this item, how to deliver item
     * [ ] Status: Open (https://docs.google.com/spreadsheets/d/1RXqzNGyF0MiYs995yNG0tkUpFRB_tgcPHtnNA9GzmwI/edit?usp=sharing)
 * [ ] As an authenticated user, I can delete my own request
@@ -27,7 +27,7 @@ The following **required** functionality is complete:
 * [ ] As a user, I can click on item to see details (requester, name, picture, link, description, status, quantity, offer price)
 * [ ] As an authenticated user, I can create my travel plan
    * [ ] Location: where I will be
-   * [ ] Time: when I will be there
+   * [ ] Time: when I will be back to VietNam
 
 ===Kha di˜===
 * [ ] As an authenticated user, I can make an offer on an open request (carry price, delivery date)
