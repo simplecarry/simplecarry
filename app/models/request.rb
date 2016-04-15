@@ -5,13 +5,14 @@ class Request < ActiveRecord::Base
   has_one :selected_offer, class_name: 'Offer'
 
   belongs_to :requester, class_name: 'User'
-
+  
+  validates :description, presence: true, if: :active_or_item?
   validates :requester, presence: true, if: :check_validate?
   validates :delivery_method, presence: true, if: :check_validate?
   validates :selling_location, presence: true, if: :check_validate?
   validates :delivery_location, presence: true, if: :check_validate?
   validates :offer_price, presence: true, numericality: { greater_than_or_equal_to: 0 }, if: :check_validate?
-  validates :name, presence: true, uniqueness: true, if: :check_validate?
+  validates :name, presence: true, uniqueness: true, if: :active_or_item?
   validates :quantity, presence: true
   validates :status, presence: true
   
@@ -22,6 +23,19 @@ class Request < ActiveRecord::Base
   end
 
   def check_validate?
-    check_validate != true
+    check_validate == 'active'
   end
+
+  def active_or_item?
+    check_validate.include?('item') || check_validate?
+  end
+
+  def active_or_location?
+    check_validate.include?('location') || check_validate?
+  end
+
+  def active_or_price?
+    check_validate.include?('price') || check_validate?
+  end
+
 end

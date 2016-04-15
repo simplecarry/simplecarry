@@ -1,11 +1,30 @@
 <h1>Item</h1>
+<%= render 'form_error' %>
 <%= form_for @request, url: wizard_path, method: :put  do |f| %>
-  <div class="field">
-    <%= f.label :name %> <br>
-    <%= f.text_field :name %>
-  <div>
-  <div class="actions">
-    <%= f.submit "Continue" %>
-  </div>
+  <ul>
+    <div class="field">
+      <li>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <%= f.label :description %><br>
+        <%= f.text_area :description %>
+      </li>
+      <li>
+        <%= f.label :picture_url %> <br>
+        <%= f.text_field :picture_url %>
+      </li>
+      <li>
+        <%= f.label :links, "Link to item" %> <br>
+        <%= f.text_field :links, placeholder: "Optional" %>
+      </li>
+    <div>
+    <li>
+      <div class="actions">
+        <%= f.submit "Continue" %>
+      </div>
+    </li>
+  </ul>
 <% end %>
   <%= console %>

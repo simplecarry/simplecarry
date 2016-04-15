@@ -3,19 +3,40 @@ class NewRequestController < ApplicationController
   steps :item, :location, :price
   
   def show
-    @request = Request.new
+    case step
+    when :item
+      @request = Request.new
+      session[:request] = nil
+    else
+      @request = Request.new(session[:request])
+    end
     render_wizard
   end
 
   def update
-    @request = Request.new
-    @request.update_attributes(request_params)
-    render_wizard @request
-  end
-
-  def create
-    @request = Request.create
-    redirect_to root_path
+    case step
+    when :item
+      @request = Request.new(request_params)
+      session[:request] = @request.attributes
+      @request.check_validate = step
+      if @request.valid?
+        redirect_to next_wizard_path
+      else
+        render_wizard
+      end
+    when :location
+      session[:request] =  session[:request].merge(params[:request])
+      redirect_to next_wizard_path
+    when :price
+      session[:request] = session[:request].merge(params[:request])
+      @request = Request.new(session[:request])
+      @request.check_validate = "active"
+      if @request.save
+        redirect_to root_path
+      else
+        render_wizard
+      end
+    end
   end
 
   private

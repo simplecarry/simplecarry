@@ -1,1 +1,23 @@
-Location
+<h1>Location</h1>
+
+<%= render 'form_error' %>
+<%= form_for @request, url: wizard_path, method: :put do |f| %>
+  <ul>
+    <div class="field">
+      <li>
+        <%= f.label :selling_location_id, "Sell Location" %> <br>
+        <%= f.collection_select :selling_location_id, Location.all, :id, :name %>
+      </li>
+      <li>
+        <%= f.label :delivery_method_id, "Delivery option" %> <br>
+        <%= f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name %>
+      </li>
+    <div>
+    <li>
+      <div class="actions">
+        <%= f.submit "Continue" %>
+      </div>
+    </li>
+  </ul>
+<% end %>
+  <%= console %>
