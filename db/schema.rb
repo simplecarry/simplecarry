@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410130159) do
+ActiveRecord::Schema.define(version: 20160415022523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,19 +52,20 @@ ActiveRecord::Schema.define(version: 20160410130159) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.string   "name",                             null: false
+    t.string   "name",                                null: false
     t.text     "description"
     t.integer  "delivery_method_id"
     t.string   "picture_url"
-    t.integer  "offer_price",                      null: false
-    t.integer  "quantity",             default: 1, null: false
-    t.integer  "status",               default: 0, null: false
-    t.integer  "requester_id",                     null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "selling_location_id",              null: false
-    t.integer  "delivery_location_id",             null: false
+    t.integer  "offer_price",                         null: false
+    t.integer  "quantity",             default: 1,    null: false
+    t.integer  "status",               default: 0,    null: false
+    t.integer  "requester_id",                        null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "selling_location_id",                 null: false
+    t.integer  "delivery_location_id",                null: false
     t.integer  "selected_offer_id"
+    t.boolean  "check_validate",       default: true
   end
 
   add_index "requests", ["description"], name: "index_requests_on_description", using: :btree

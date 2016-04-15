@@ -1,0 +1,11 @@
+<h1>Item</h1>
+<%= form_for @request, url: wizard_path, method: :put  do |f| %>
+  <div class="field">
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %>
+  <div>
+  <div class="actions">
+    <%= f.submit "Continue" %>
+  </div>
+<% end %>
+  <%= console %>
