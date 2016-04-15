@@ -7,7 +7,7 @@ class Request < ActiveRecord::Base
   belongs_to :requester, class_name: 'User'
   
   validates :description, presence: true, if: :active_or_item?
-  #validates :requester, presence: true, if: :check_validate?
+  validates :requester, presence: true, if: :check_validate?
   validates :delivery_method_id, presence: true, if: :check_validate?
   validates :selling_location_id, presence: true, if: :check_validate?
   #validates :delivery_location, presence: true, if: :check_validate?

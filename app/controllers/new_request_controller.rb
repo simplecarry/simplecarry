@@ -16,7 +16,7 @@ class NewRequestController < ApplicationController
   def update
     case step
     when :item
-      @request = Request.new(request_params)
+      @request = current_user.requests.new(request_params)
       session[:request] = @request.attributes
       @request.check_validate = step
       if @request.valid?
@@ -29,7 +29,7 @@ class NewRequestController < ApplicationController
       redirect_to next_wizard_path
     when :price
       session[:request] = session[:request].merge(params[:request])
-      @request = Request.new(session[:request])
+      @request = current_user.requests.new(session[:request])
       @request.check_validate = "active"
       if @request.save
         redirect_to root_path
