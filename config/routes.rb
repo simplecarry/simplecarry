@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  get 'requests/index'
+
+  get 'requests/show'
+
   devise_for :users
   resources :new_request
+  resources :requests
   root 'home#index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

@@ -1,0 +1,9 @@
+<h1>Requests#index</h1>
+<p>Find me in app/views/requests/index.html.erb</p>
+
+<ul>
+  <% @requests.each do |request| %>
+  <li><%= request.name %></li>
+  <li><%= request.description %></li>
+  <% end %>
+</ul>
