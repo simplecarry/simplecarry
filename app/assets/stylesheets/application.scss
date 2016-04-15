@@ -1,5 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+h1{
+  font-size: 64px;
+}
 
 .navbar {
   background-color: #4DB6AC;
@@ -25,10 +28,6 @@ body {
   color: #E0F2F1;
 }
 
-.button-wrapper {
-  text-align: center;
-}
-
 .btn {
   background: #80CBC4;
   color: #009688;
@@ -41,4 +40,9 @@ body {
   height: 140px;
   background-color: #4DB6AC;
   width: 100%;
+  font-size: 24px;
+}
+
+label{
+  color: white;
 }
