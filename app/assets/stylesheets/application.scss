@@ -40,9 +40,17 @@ body {
   height: 140px;
   background-color: #4DB6AC;
   width: 100%;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 label{
   color: white;
+}
+
+.form-inline .form-control {
+  width: 300px;
+}
+
+.form-control {
+  width: 300px;
 }
