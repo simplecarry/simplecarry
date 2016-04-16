@@ -13,6 +13,10 @@ class TravelPlansController < ApplicationController
     end
   end
 
+  def index
+    @locations = Location.have_request
+  end
+
   private
 
   def date_params

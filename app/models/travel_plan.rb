@@ -4,4 +4,5 @@ class TravelPlan < ActiveRecord::Base
   validates :user, presence: true
   validates :country, presence: true
   validates :return_date, presence: true
+
 end

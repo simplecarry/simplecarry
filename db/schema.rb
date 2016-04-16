@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(version: 20160416095244) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "picture_url"
   end
 
   add_index "locations", ["name"], name: "index_locations_on_name", using: :btree

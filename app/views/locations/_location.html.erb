@@ -1,0 +1,13 @@
+ <div class="col-sm-6">
+   <%= link_to requests_path(location: "#{location.name}") do %>    
+  <div class="panel panel-default">
+    <div class="panel-thumbnail">
+     <%= image_tag location.picture_url, class: "img-responsive" %>
+    </div>
+    <div class="panel-body">
+      <p class="lead"><%= location.name %></p>
+      
+    </div>
+  </div>
+<% end %>
+ </div>
