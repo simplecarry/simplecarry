@@ -2,7 +2,10 @@ class RequestsController < ApplicationController
   before_action :load_request, only: [:show]
 
   def index
-    @requests = current_user.requests
+    @requests = Request.all
+    if params[:location]
+      @requests = Location.find_by_name(params[:location]).requests
+    end
   end
 
   def show
