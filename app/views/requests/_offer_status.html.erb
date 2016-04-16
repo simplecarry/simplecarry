@@ -1,27 +1,4 @@
-<hr/>
-<p>
-  <span class="glyphicon glyphicon-plane"></span>
-  Traveller offered to help
-</p>
-<br/>
-<div class="user-info">
-  <div class="media">
-    <div class="media-left media-middle">
-      <img class="media-object img-circle avatar" src="<%= @request.selected_offer.carrier.avatar %>" alt="Requester Avatar">
-    </div>
-    <div class="media-body">
-      <h4 class="media-heading"><%= @request.selected_offer.carrier.email %></h4>
-      <div class="user-rating">
-        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-      </div>
-    </div>
-  </div>
-</div>
-<%= friendly_status(@request) %>
+<%= render 'traveller_info' %>
 
 <% if current_user %>
     <% if @request.can_make_deposit?(current_user) %>
@@ -32,7 +9,7 @@
         </button>
         <div class="modal fade" id="deposit-modal" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-md" role="document">
-            <form method="post" action="">
+            <form method="post" action="<%= deposit_request_path(@request) %>">
               <%= token_tag %>
               <div class="modal-content">
                 <div class="modal-header">

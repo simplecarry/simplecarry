@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :load_request, only: [:show]
+  before_action :load_request, only: [:show, :deposit]
 
   def index
     @requests = Request.all
@@ -9,6 +9,11 @@ class RequestsController < ApplicationController
   end
 
   def show
+  end
+
+  def deposit
+    @request.make_deposit
+    redirect_to action: :show, id: params[:id]
   end
 
   private

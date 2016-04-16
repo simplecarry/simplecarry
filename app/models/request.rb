@@ -30,6 +30,11 @@ class Request < ActiveRecord::Base
     has_offered? && user.id == requester_id
   end
 
+  def make_deposit
+    self.status = :confirmed
+    self.save
+  end
+
   def new_offer(user, price = self.offer_price, arrival_date = Date.now)
     if self.open?
       offer_opts = {

@@ -1,0 +1,24 @@
+<hr/>
+<p>
+  <span class="glyphicon glyphicon-plane"></span>
+  Traveller offered to help
+</p>
+<br/>
+<div class="user-info">
+  <div class="media">
+    <div class="media-left media-middle">
+      <img class="media-object img-circle avatar" src="<%= @request.selected_offer.carrier.avatar %>" alt="Requester Avatar">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><%= @request.selected_offer.carrier.email %></h4>
+      <div class="user-rating">
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<%= friendly_status(@request) %>
