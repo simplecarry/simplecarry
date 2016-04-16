@@ -56,14 +56,14 @@ ActiveRecord::Schema.define(version: 20160415033503) do
     t.text     "description"
     t.integer  "delivery_method_id"
     t.string   "picture_url"
-    t.integer  "offer_price"
-    t.integer  "quantity",             default: 1
-    t.integer  "status",               default: 0
-    t.integer  "requester_id"
+    t.integer  "offer_price",                       null: false
+    t.integer  "quantity",             default: 1,  null: false
+    t.integer  "status",               default: 0,  null: false
+    t.integer  "requester_id",                      null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.integer  "selling_location_id"
-    t.integer  "delivery_location_id"
+    t.integer  "selling_location_id",               null: false
+    t.integer  "delivery_location_id",              null: false
     t.integer  "selected_offer_id"
     t.string   "check_validate",       default: ""
     t.string   "links"

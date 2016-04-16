@@ -1,0 +1,18 @@
+<h1>TravelPlans#new</h1>
+<%= render 'form_error' %>
+<%= form_for @travel_plan  do |f| %>
+    <ul>
+        <li>
+          <%= f.label :country %><br>
+          <%= f.text_field :country %>
+        </li>
+        <li>
+          <%= f.label :return_date %><br>
+          <%= f.date_select :return_date %>
+
+        </li>
+      <li>
+        <%= f.submit "Continue" %>
+      </li>
+    </ul>
+<%end%>
