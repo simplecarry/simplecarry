@@ -5,14 +5,14 @@ class CreateRequests < ActiveRecord::Migration
       t.text :description
       t.references :delivery_method
       t.string :picture_url
-      t.integer :offer_price, null: false
-      t.integer :quantity, default: 1, null: false
-      t.integer :status, default: 0, null: false
-      t.integer :requester_id, null: false
+      t.integer :offer_price
+      t.integer :quantity, default: 1
+      t.integer :status, default: 0
+      t.integer :requester_id
       t.timestamps null: false
 
-      t.integer :selling_location_id, null: false
-      t.integer :delivery_location_id, null: false
+      t.integer :selling_location_id
+      t.integer :delivery_location_id
 
       t.index :name
       t.index :description
