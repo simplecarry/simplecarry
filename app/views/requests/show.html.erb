@@ -12,7 +12,7 @@
         <div class="col-sm-8 col-sm-offset-1 user-info">
           <div class="media">
             <div class="media-left media-middle">
-                <img class="media-object img-circle avatar" src="<%= @request.requester.avatar %>" alt="Requester Avatar">
+              <img class="media-object img-circle avatar" src="<%= @request.requester.avatar %>" alt="Requester Avatar">
             </div>
             <div class="media-body">
               <h4 class="media-heading"><%= @request.requester.email %></h4>
@@ -27,6 +27,7 @@
           </div>
         </div>
       </div>
+      <hr/>
       <div class="row">
         <div class="col-sm-8 col-sm-offset-1">
           <img class="product-image" src="<%= @request.picture_url %>" class="img-rounded"/>
@@ -34,7 +35,32 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div>product info</div>
+      <h3><%= @request.name %></h3>
+      <p><%= @request.description %></p>
+      <p>
+        <span class="glyphicon glyphicon-map-marker"></span>
+        Shop in <%= @request.selling_location.name %>
+      </p>
+      <p>
+        <span class="glyphicon glyphicon-map-marker"></span>
+        Deal in <%= @request.delivery_location.name %>
+      </p>
+      <p>
+        <span class="glyphicon glyphicon-map-marker"></span>
+        Deal in <%= @request.delivery_location.name %>
+      </p>
+      <h5><%= @request.delivery_method.name %></h5>
+      <p><%= @request.delivery_method.description %></p>
+      <% if @request.links %>
+          <p>
+            <span class="glyphicon glyphicon-map-link"></span>
+            <a href="<%= @request.links %>"><%= @request.links %></a>
+          </p>
+      <% end %>
+      <p>
+        <span class="glyphicon glyphicon-tag"></span>
+        VND <%= @request.offer_price %>
+      </p>
     </div>
   </div>
 </div>

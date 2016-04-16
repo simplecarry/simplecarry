@@ -1,8 +1,8 @@
 class Request < ActiveRecord::Base
-  has_one :delivery_method
-  has_one :selling_location, class_name: 'Location'
-  has_one :delivery_location, class_name: 'Location'
-  has_one :selected_offer, class_name: 'Offer'
+  belongs_to :delivery_method
+  belongs_to :selling_location, class_name: 'Location'
+  belongs_to :delivery_location, class_name: 'Location'
+  belongs_to :selected_offer, class_name: 'Offer'
 
   belongs_to :requester, class_name: 'User'
 
