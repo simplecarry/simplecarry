@@ -4,7 +4,15 @@
     <% if @request.can_make_deposit?(current_user) %>
         <%= render 'deposit_form' %>
     <% elsif @request.can_make_purchase?(current_user) %>
-        <form><button type="submit"></button></form>
+        <form method="post" action="<%= item_bought_request_path(@request) %>" class="form-inline">
+          <%= token_tag %>
+          <button type="submit" class="btn btn-success">Item Bought</button>
+        </form>
+    <% elsif @request.can_make_deliver?(current_user) %>
+        <form method="post" action="<%= item_delivered_request_path(@request) %>" class="form-inline">
+          <%= token_tag %>
+          <button type="submit" class="btn btn-success">Delivered!</button>
+        </form>
     <% end %>
 <% else %>
     <a href="<%= new_user_session_path %>" class="btn btn-success">Sign in to Deposit</a>

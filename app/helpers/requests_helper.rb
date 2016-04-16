@@ -7,6 +7,8 @@ module RequestsHelper
       message = "<h4><span class='label label-default'>Pending Deposit</span></h4>"
     elsif request.deposited?
       message = "<h4><span class='label label-primary'>Deposited</span></h4>"
+    elsif request.completed?
+      message = "<h4><span class='label label-success'>Completed</span></h4>"
     end
     message.html_safe
   end
