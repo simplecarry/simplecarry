@@ -6,6 +6,10 @@ class RequestsController < ApplicationController
     if params[:location]
       @requests = Location.find_by_name(params[:location]).requests
     end
+    
+    if params[:order] == "status"
+      @requests = Request.ordered_by_status
+    end
   end
 
   def show

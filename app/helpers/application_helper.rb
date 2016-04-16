@@ -19,4 +19,8 @@ module ApplicationHelper
     end
     nil
   end
+
+  def status_color_for(status)
+    {"Open" => 'label-success', "Completed" => 'label-primary'}[status] || 'label-default'
+  end
 end
