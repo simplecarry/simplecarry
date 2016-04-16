@@ -39,7 +39,7 @@ Request.create(
 Request.create(
     requester: user3,
     name: 'Black bean matcha',
-    selling_location_id: tokyo.id,
+    selling_location_id: toronto.id,
     delivery_location_id: saigon.id,
     description: 'Gay lord come form gay ',
     delivery_method_id: home.id,
