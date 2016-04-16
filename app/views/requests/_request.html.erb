@@ -9,7 +9,8 @@
       <p><%= request.description %></p>
       
       <p>
-        <img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" height="28px" width="28px">
+        <span class="label <%= status_color_for(request.status_to_s) %>">
+        <%= request.status_to_s %></span>
       </p>
     </div>
   </div>

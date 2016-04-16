@@ -1,0 +1,4 @@
+<%= form_tag requests_path, method: "get"  do %>
+  <%= label_tag "Order:" %>
+  <%= select_tag "order", options_for_select(["all","last", "status" ]), onchange: "this.form.submit();" %>
+<% end %>

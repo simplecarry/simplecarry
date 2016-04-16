@@ -10,6 +10,9 @@
 <nav class="navbar navbar-default bg-faded">
   <a class="navbar-brand " href="/"><img src="/assets/simple carry.png" width="150px" height="30px"></a>
   <ul class="nav navbar-nav pull-right">
+    <li class="nav-item">
+      <a class="nav-link" <%= link_to "Browse", travel_plans_path%></a>
+    </li>
     <% if user_signed_in?%>
         <li class="nav-item">
           <a class="nav-link" <%=link_to "Post request", '/new_request'%></a>
