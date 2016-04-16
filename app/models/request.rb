@@ -26,6 +26,10 @@ class Request < ActiveRecord::Base
     pending?
   end
 
+  def can_make_deposit?(user)
+    has_offered? && user.id == requester_id
+  end
+
   def new_offer(user, price = self.offer_price, arrival_date = Date.now)
     if self.open?
       offer_opts = {
