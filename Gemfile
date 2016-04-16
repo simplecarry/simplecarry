@@ -30,6 +30,9 @@ gem 'rails_admin'
 # Devise 
 gem 'devise'
 
+# Wicked
+gem 'wicked'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

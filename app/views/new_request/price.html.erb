@@ -1,0 +1,20 @@
+<h1>
+  Price
+</h1>
+<%= render 'form_error' %>
+<%= form_for @request, url: wizard_path, method: :put do |f| %>
+  <ul>
+    <div class="field">
+      <li>
+        <%= f.label :offer_price %><br>
+        <%= f.text_field :offer_price %>
+      </li>
+    <div>
+    <li>
+      <div class="actions">
+        <%= f.submit "Continue" %>
+      </div>
+    </li>
+  </ul>
+<% end %>
+<%= console %>
