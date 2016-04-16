@@ -18,6 +18,10 @@ class Request < ActiveRecord::Base
 
   enum status: [:open, :pending, :confirmed, :accepted, :arrived, :completed]
 
+  def can_have_new_offer?
+    open?
+  end
+
   def new_offer(user, price = self.offer_price, arrival_date = Date.now)
     if request.status == :open
       offer_opts = {

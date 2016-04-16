@@ -1,60 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-h1 {
-  font-size: 64px;
-}
 
-.navbar {
-  background-color: #4DB6AC;
-}
-
-.nav-item {
-  background: #80CBC4;
-}
-
-.nav-link {
-  color: white;
-}
-
-body {
-  background: #009688;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-}
-
-.body-container {
+.container {
   margin-top: 80px;
-}
-
-.slogan {
-  color: #E0F2F1;
-}
-
-.btn {
-  background: #80CBC4;
-  color: #009688;
-}
-
-
-.footer {
-  bottom: 0;
-  left: 0;
-  height: 140px;
-  background-color: #4DB6AC;
-  width: 100%;
-  font-size: 20px;
-}
-
-label {
-  color: white;
-}
-
-.form-inline .form-control {
-  width: 300px;
-}
-
-.form-control {
-  width: 300px;
 }
 
 .avatar {

@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+<nav class="navbar navbar-default bg-faded">
   <a class="navbar-brand " href="/"><img src="/assets/simple carry.png" width="150px" height="30px"></a>
   <ul class="nav navbar-nav pull-right">
     <% if user_signed_in?%>
@@ -26,7 +26,7 @@
       <a class="nav-link" <%= link_to "Login/Register", new_user_session_path%></a>
     </li>
     <%end%>
-    <li class="nav-item active">
+    <li class="nav-item">
       <!--TODO:hieu map bo path vao-->
       <a class="nav-link" <%= link_to "Search", root_path%></a>
     </li>
