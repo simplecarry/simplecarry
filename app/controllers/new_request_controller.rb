@@ -31,7 +31,7 @@ class NewRequestController < ApplicationController
       session[:request] = session[:request].merge(params[:request])
       @request = current_user.requests.new(session[:request])
       @request.check_validate = "active"
-      @request.status = 'Open'
+      @request.status = :open
       if @request.save
         redirect_to root_path
       else
