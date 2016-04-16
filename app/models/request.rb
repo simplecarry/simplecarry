@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
   has_one :selected_offer, class_name: 'Offer'
 
   belongs_to :requester, class_name: 'User'
-  
+
   validates :description, presence: true, if: :active_or_item?
   validates :requester, presence: true, if: :check_validate?
   validates :delivery_method_id, presence: true, if: :check_validate?
@@ -15,11 +15,22 @@ class Request < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true, if: :active_or_item?
   validates :quantity, presence: true
   validates :status, presence: true
-  
-  STATUS = ['Open', 'Pending', 'Confirmed', 'Accepted', 'Arrived', 'Completed']
 
-  def status?
-    STATUS[self[:status]]
+  enum status: [:open, :pending, :confirmed, :accepted, :arrived, :completed]
+
+  def new_offer(user, price = self.offer_price, arrival_date = Date.now)
+    if request.status == :open
+      offer_opts = {
+          user: user,
+          request: self,
+          price: price,
+          arrival_date: arrival_date
+      }
+      Offer.create(offer_opts)
+    else
+      errors.add(:base, 'Can only make new offer on open request')
+    end
+    self
   end
 
   def check_validate?

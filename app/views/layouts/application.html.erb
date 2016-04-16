@@ -2,36 +2,52 @@
 <html>
 <head>
   <title>Simplecarry</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
-  <a class="navbar-brand " href="/"><img src="assets/simple carry.png" width="150px" height="30px"></a>
-  <ul class="nav navbar-nav pull-right">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Search</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" <%=link_to "Register", new_user_registration_path%></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" <%= link_to "Login", new_user_session_path%></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About Us</a>
-    </li>
-  </ul>
+<div class="header">
+  <nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand " href="/"><img src="/assets/simple carry.png" width="150px" height="30px"></a>
+    <ul class="nav navbar-nav pull-right">
+      <% if user_signed_in? %>
+          <li class="nav-item">
+            <!--TODO:hieu map bo path vao-->
+            <a class="nav-link" <%= link_to "Post request", root_path %></a>
+          </li>
+          <li class="nav-item">
+            <!--TODO:hieu map bo path vao-->
+            <a class="nav-link" <%= link_to "Post travel plan", root_path %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to "Sign out", destroy_user_session_path, data: {confirm: 'Are you sure?'}, method: :delete %></a>
+          </li>
+      <% else %>
+          <li class="nav-item">
+            <a class="nav-link" <%= link_to "Login/Register", new_user_session_path %></a>
+          </li>
+      <% end %>
+      <li class="nav-item active">
+        <!--TODO:hieu map bo path vao-->
+        <a class="nav-link" <%= link_to "Search", root_path %></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+    </ul>
   </nav>
+</div>
 
 <%= yield %>
 <div class="footer">
   <div class="container sb-slide">
-    <p class="contactUs"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;72 Lê Thánh Tôn, Phường Bến Thánh, Q1, HCMC, VietNam</p>
+    <p class="contactUs"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;72 Lê Thánh Tôn, Phường Bến Thánh, Q1,
+      HCMC, VietNam</p>
     <p class="contactUs"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;+84 90 674 8189</p>
-    <p class="contactUs"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;<a href="">support@simple.com</a></p><br>
+    <p class="contactUs"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;<a href="">support@simple.com</a></p>
+    <br>
   </div>
-  </div>
+</div>
 </body>
 </html>

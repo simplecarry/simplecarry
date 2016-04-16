@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+h1 {
+  font-size: 64px;
+}
+
 .navbar {
   background-color: #4DB6AC;
 }
@@ -8,6 +12,7 @@
 .nav-item {
   background: #80CBC4;
 }
+
 .nav-link {
   color: white;
 }
@@ -25,25 +30,54 @@ body {
   color: #E0F2F1;
 }
 
-.button-wrapper {
-  text-align: center;
-}
-
 .btn {
   background: #80CBC4;
   color: #009688;
 }
 
-.well,.panel {border-color:#d2d2d2;box-shadow:0 1px 0 #cfcfcf;border-radius:3px;}
 
 .footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   height: 140px;
   background-color: #4DB6AC;
   width: 100%;
+  font-size: 20px;
 }
+
+label {
+  color: white;
+}
+
+.form-inline .form-control {
+  width: 300px;
+}
+
+.form-control {
+  width: 300px;
+}
+
+.avatar {
+  max-width: 48px;
+  max-height: 48px;
+}
+
+.user-info {
+  .username {
+    vertical-align: top;
+  }
+  .user-rating {
+    vertical-align: bottom;
+    font-size: 24px;
+  }
+}
+
+.product-image {
+  max-height: 320px;
+  max-width: 320px;
+}
+.well,.panel {border-color:#d2d2d2;box-shadow:0 1px 0 #cfcfcf;border-radius:3px;}
+
 .panel .btn i,.btn span{
   color: black;
 }
