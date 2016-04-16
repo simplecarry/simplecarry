@@ -12,7 +12,7 @@ class Request < ActiveRecord::Base
   validates :selling_location_id, presence: true, if: :check_validate?
   #validates :delivery_location, presence: true, if: :check_validate?
   validates :offer_price, presence: true, numericality: { greater_than_or_equal_to: 0 }, if: :check_validate?
-  validates :name, presence: true, uniqueness: true, if: :active_or_item?
+  validates :name, presence: true, if: :active_or_item?
   validates :quantity, presence: true
   validates :status, presence: true
 
@@ -48,5 +48,8 @@ class Request < ActiveRecord::Base
   def active_or_price?
     check_validate.include?('price') || check_validate?
   end
-
+  
+  def self.search(search)
+    where { (name =~ "%#{search}%") | (description =~ "%#{search}%")}
+  end
 end
