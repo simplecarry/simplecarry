@@ -19,7 +19,7 @@ Request.create(
     name: 'Green bean matcha',
     selling_location_id: tokyo.id,
     delivery_location_id: saigon.id,
-    description: 'Feed me this shit',
+    description: 'Feed me this shit gay la',
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2015-08-24_51222.6184997519.jpg',
     quantity: 10,
@@ -38,10 +38,10 @@ Request.create(
 )
 Request.create(
     requester: user1,
-    name: 'Black bean matcha',
+    name: 'Cuto matcha',
     selling_location_id: tokyo.id,
     delivery_location_id: saigon.id,
-    description: 'Feed me this shit',
+    description: 'Gay lord come form gay ',
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-01-14_61871.2960236356.jpg',
     quantity: 10,
