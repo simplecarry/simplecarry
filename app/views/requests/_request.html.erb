@@ -1,0 +1,19 @@
+ <div class="col-sm-4">
+<%= link_to request_path(request) do %>    
+  <div class="panel panel-default">
+    <div class="panel-thumbnail">
+     <%= image_tag request.picture_url, class: "img-responsive" %>
+    </div>
+    <div class="panel-body">
+      <p class="lead"><%= request.name %></p>
+      <p><%= request.description %></p>
+      
+      <p>
+        <img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" height="28px" width="28px">
+      </p>
+    </div>
+  </div>
+<% end %>
+
+  
+</div><!--/col-->

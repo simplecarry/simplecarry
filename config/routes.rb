@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'requests/index'
-
-  get 'requests/show'
+  get 'travel_plans/new'
 
   devise_for :users
   resources :new_request
   resources :requests
+  resources :travel_plans
   root 'home#index'
+  get '/trip' => 'trips#new'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
