@@ -1,9 +1,21 @@
-<h1>Requests#index</h1>
-<p>Find me in app/views/requests/index.html.erb</p>
+<h1 class="text-center">Your request</h1>
 
-<ul>
-  <% @requests.each do |request| %>
-  <li><%= request.name %></li>
-  <li><%= request.description %></li>
-  <% end %>
-</ul>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+      <% @requests.each do |request| %>
+      <tr>
+      <td><%= request.name %></td>
+      <td><%= request.description %></td>
+      <td><%= request.status %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
