@@ -16,14 +16,14 @@ class Request < ActiveRecord::Base
   validates :quantity, presence: true
   validates :status, presence: true
 
-  enum status: [:open, :pending, :confirmed, :accepted, :arrived, :completed]
+  enum status: [:open, :pending_deposit, :deposited, :waiting_delivery, :completed]
 
   def can_make_new_offer?(user)
     open? && user.id != requester_id
   end
 
   def has_offered?
-    pending?
+    pending_deposit?
   end
 
   def can_make_deposit?(user)
@@ -31,8 +31,12 @@ class Request < ActiveRecord::Base
   end
 
   def make_deposit
-    self.status = :confirmed
+    self.status = :deposited
     self.save
+  end
+
+  def can_make_purchase?(user)
+    deposited? && user.id == self.selected_offer.carrier_id
   end
 
   def new_offer(user, price = self.offer_price, arrival_date = Date.now)
@@ -45,7 +49,7 @@ class Request < ActiveRecord::Base
       }
       offer = Offer.create(offer_opts)
       if offer.errors.empty?
-        self.status = :pending
+        self.status = :pending_deposit
         self.save
       else
         offer.errors.each do |key|
