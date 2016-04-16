@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   get 'travel_plans/new'
 
-  get 'requests/index'
-
-  get 'requests/show'
-
   devise_for :users
   resources :new_request
   resources :requests
