@@ -21,7 +21,7 @@ Request.create(
     delivery_location_id: saigon.id,
     description: 'Feed me this shit',
     delivery_method_id: home.id,
-    picture_url: 'abc',
+    picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2015-08-24_51222.6184997519.jpg',
     quantity: 10,
     offer_price: 10000
 )
@@ -32,7 +32,7 @@ Request.create(
     delivery_location_id: saigon.id,
     description: 'Feed me this shit',
     delivery_method_id: whitehouse.id,
-    picture_url: 'abc',
+    picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-03-23_92864.7570336483.jpg',
     quantity: 10,
     offer_price: 20000
 )
@@ -43,7 +43,7 @@ Request.create(
     delivery_location_id: saigon.id,
     description: 'Feed me this shit',
     delivery_method_id: home.id,
-    picture_url: 'abc',
+    picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-01-14_61871.2960236356.jpg',
     quantity: 10,
     offer_price: 30000
 )

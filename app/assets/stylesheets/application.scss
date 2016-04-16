@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-h1{
+
+h1 {
   font-size: 64px;
 }
 
@@ -11,6 +12,7 @@ h1{
 .nav-item {
   background: #80CBC4;
 }
+
 .nav-link {
   color: white;
 }
@@ -34,7 +36,6 @@ body {
 }
 
 .footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   height: 140px;
@@ -43,7 +44,7 @@ body {
   font-size: 20px;
 }
 
-label{
+label {
   color: white;
 }
 
@@ -58,4 +59,19 @@ label{
 .avatar {
   max-width: 48px;
   max-height: 48px;
+}
+
+.user-info {
+  .username {
+    vertical-align: top;
+  }
+  .user-rating {
+    vertical-align: bottom;
+    font-size: 24px;
+  }
+}
+
+.product-image {
+  max-height: 320px;
+  max-width: 320px;
 }
