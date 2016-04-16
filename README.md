@@ -30,7 +30,7 @@ The following **required** functionality is complete:
    * [ ] Time: when I will be back to VietNam
 
 ===Kha di˜===
-* [ ] As an authenticated user, I can make an offer on an open request (carry price, delivery date)
+* [x] As an authenticated user, I can make an offer on an open request (carry price, delivery date)
 * [ ] As an authenticated user, I cancel my offer on a request
 * [ ] As an authenticated user, I cannot make an offer on my own requests
 * [ ] As an authenticated user, I select 1 offer for my requests status -> pending deposit

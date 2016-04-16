@@ -26,7 +26,7 @@ Request.create(
     offer_price: 10000
 )
 Request.create(
-    requester: user1,
+    requester: user2,
     name: 'Red bean matcha',
     selling_location_id: tokyo.id,
     delivery_location_id: saigon.id,
@@ -37,7 +37,7 @@ Request.create(
     offer_price: 20000
 )
 Request.create(
-    requester: user1,
+    requester: user3,
     name: 'Black bean matcha',
     selling_location_id: tokyo.id,
     delivery_location_id: saigon.id,

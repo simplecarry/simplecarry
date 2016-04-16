@@ -1,0 +1,45 @@
+<% if current_user %>
+    <% if @request.can_make_new_offer?(current_user) %>
+        <%= flash_messages(@request) %>
+        <button id="js-offer-help-btn" class="btn btn-primary"
+                data-toggle="modal" data-target="#offer-modal">
+          Offer to Help
+        </button>
+        <div class="modal fade" id="offer-modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-sm" role="document">
+            <form method="post" action="<%= request_offers_path(@request) %>">
+              <%= token_tag %>
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Offer to Help</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="price">Offer Price</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">VND</span>
+                      <input type="number" class="form-control" value="<%= @request.offer_price %>" id="price" name="price"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="arrival_date">Return Date to <%= @request.delivery_location.name %></label>
+                    <div class="input-group">
+                      <input type="date" class="form-control" min="<%= DateTime.now.strftime('%Y-%m-%d') %>"
+                             placeholder="dd/mm/yyyy" id="arrival_date" name="arrival_date"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-success">Confirm</button>
+                  <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    <% end %>
+<% else %>
+    <a href="<%= new_user_session_path %>" class="btn btn-success">Sign in to Help</a>
+<% end %>

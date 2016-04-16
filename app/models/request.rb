@@ -2,7 +2,7 @@ class Request < ActiveRecord::Base
   belongs_to :delivery_method
   belongs_to :selling_location, class_name: 'Location'
   belongs_to :delivery_location, class_name: 'Location'
-  belongs_to :selected_offer, class_name: 'Offer'
+  has_one :selected_offer, class_name: 'Offer'
 
   belongs_to :requester, class_name: 'User'
 
@@ -18,8 +18,12 @@ class Request < ActiveRecord::Base
 
   enum status: [:open, :pending, :confirmed, :accepted, :arrived, :completed]
 
-  def can_have_new_offer?
-    open?
+  def can_make_new_offer?(user)
+    open? && user.id != requester_id
+  end
+
+  def has_offered?
+    pending?
   end
 
   def new_offer(user, price = self.offer_price, arrival_date = Date.now)
