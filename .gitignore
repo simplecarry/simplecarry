@@ -16,3 +16,5 @@
 *.iml
 simplecarry_development
 *.swp
+
+.byebug_history
