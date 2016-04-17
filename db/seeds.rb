@@ -9,10 +9,10 @@ melbourne = Location.create(:name => 'Melbourne', picture_url:"https://d8hh9kinq
 home = DeliveryMethod.create(:name => 'To this address', :description => 'Deliver to the provided address')
 whitehouse = DeliveryMethod.create(:name => 'Self pickup', :description => 'Deliver to the White House')
 
-user1 = User.create(:email => 'user1@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg')
-user2 = User.create(:email => 'user2@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg')
-user3 = User.create(:email => 'user3@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg')
-user4 = User.create(:email => 'user4@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg')
+user1 = User.create(:email => 'user1@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg', :current_score => 3)
+user2 = User.create(:email => 'user2@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg', :current_score => 5)
+user3 = User.create(:email => 'user3@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg', :current_score => 4)
+user4 = User.create(:email => 'user4@example.com', :password => 'password', :password_confirmation => 'password', :avatar => 'https://d8hh9kinq36uh.cloudfront.net/profile/2016-03-25_26717.873446329.jpg', :current_score => 1)
 
 Request.create(
     requester_id: user1.id,
