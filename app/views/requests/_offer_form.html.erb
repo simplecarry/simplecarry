@@ -1,5 +1,6 @@
 <% if current_user %>
     <% if @request.can_make_new_offer?(current_user) %>
+        <hr/>
         <%= flash_messages(@request) %>
         <button id="js-offer-help-btn" class="btn btn-primary"
                 data-toggle="modal" data-target="#offer-modal">

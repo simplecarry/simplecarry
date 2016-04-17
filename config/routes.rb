@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       post 'deposit'
       post 'item_bought'
       post 'item_delivered'
+      post 'cancel_request'
+      post 'cancel_offer'
     end
     resources :offers
   end

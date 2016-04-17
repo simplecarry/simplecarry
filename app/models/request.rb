@@ -38,7 +38,7 @@ class Request < ActiveRecord::Base
   def item_bought
     self.status = :waiting_delivery
     self.save
-    end
+  end
 
   def item_delivered
     self.status = :completed
@@ -74,6 +74,17 @@ class Request < ActiveRecord::Base
       self.errors.add(:base, 'Can only make new offer on open request')
     end
     self
+  end
+
+  def cancel
+    self.selected_offer.delete
+    self.delete
+  end
+
+  def cancel_offer
+    self.selected_offer.delete
+    self.status = :open
+    self.save
   end
 
   def check_validate?

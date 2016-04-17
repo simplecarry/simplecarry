@@ -6,6 +6,10 @@
   margin-top: 80px;
 }
 
+.btn-form {
+  display: inline;
+}
+
 .avatar {
   max-width: 48px;
   max-height: 48px;
@@ -25,30 +29,39 @@
   max-height: 320px;
   max-width: 320px;
 }
-.well,.panel {border-color:#d2d2d2;box-shadow:0 1px 0 #cfcfcf;border-radius:3px;}
 
-.panel .btn i,.btn span{
+.well, .panel {
+  border-color: #d2d2d2;
+  box-shadow: 0 1px 0 #cfcfcf;
+  border-radius: 3px;
+}
+
+.panel .btn i, .btn span {
   color: black;
 }
+
 .panel .panel-heading {
-  background-color:#ffffff;
-  font-weight:700;
-  font-size:16px;
-  color:#262626;
-  border-color:#ffffff;
+  background-color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  color: #262626;
+  border-color: #ffffff;
 }
+
 .panel .panel-heading a {
-  font-weight:400;
-  font-size:11px;
+  font-weight: 400;
+  font-size: 11px;
 }
+
 .panel .panel-default {
-  border-color:#cccccc;
+  border-color: #cccccc;
 }
+
 .panel .img-circle {
-  width:50px;
-  height:50px;
+  width: 50px;
+  height: 50px;
 }
 
 .panel .panel-thumbnail {
-  padding:0;
+  padding: 0;
 }

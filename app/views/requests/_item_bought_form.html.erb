@@ -1,0 +1,9 @@
+<hr/>
+<form method="post" action="<%= item_bought_request_path(@request) %>" class="btn-form">
+  <%= token_tag %>
+  <button type="submit" class="btn btn-success">Item Bought</button>
+</form>
+<form method="post" action="<%= cancel_offer_request_path(@request) %>" class="btn-form">
+  <%= token_tag %>
+  <button type="submit" class="btn btn-danger">Cancel Offer</button>
+</form>
