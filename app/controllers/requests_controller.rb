@@ -2,13 +2,14 @@ class RequestsController < ApplicationController
   before_action :load_request, only: [:show, :deposit, :item_bought,
                                       :item_delivered, :cancel_request,
                                       :cancel_offer, :rate]
+  before_action :load_comment, only: [:show]
 
   def index
     @requests = Request.all
     unless params[:location].blank? || params[:location] == "All"
       @requests = Location.find_by_name(params[:location]).requests
     end
-
+    
     if params[:order] == "Status"
       @requests = @requests.ordered_by_status
       if params[:search]
@@ -61,10 +62,10 @@ class RequestsController < ApplicationController
   end
 
   private
-  def load_request
-    @request = Request.find_by_id(params[:id])
-  end
 
+  def load_comment
+    @comments = @request.comments
+  end
   def send_deposit_notification
     DepositNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
@@ -116,5 +117,9 @@ class RequestsController < ApplicationController
     CancelOfferNotification.create(
         receiver_id: @request.requester_id,
         content: "#{@request.selected_offer.carrier.email} canceled his offer to help you on <a href='#{request_url(@request)}'>##{@request.id}</a>")
+  end
+
+  def load_request
+    @request = Request.find_by_id(params[:id])
   end
 end

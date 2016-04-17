@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "credit-card";
+@import "comments";
+.container {
+  margin-top: 80px;
+}
 
 .footer {
   clear: both;
