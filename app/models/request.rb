@@ -15,7 +15,7 @@ class Request < ActiveRecord::Base
   validates :name, presence: true, if: :active_or_item?
   validates :quantity, presence: true
   validates :status, presence: true
-  
+
   scope :ordered_by_status, -> { order('status ASC') }
 
   enum status: [:open, :pending_deposit, :deposited, :waiting_delivery, :completed]
@@ -34,6 +34,7 @@ class Request < ActiveRecord::Base
 
   def make_deposit
     self.status = :deposited
+    self.has_deposited = true
     self.save
   end
 
@@ -65,7 +66,11 @@ class Request < ActiveRecord::Base
       }
       offer = Offer.create(offer_opts)
       if offer.errors.empty?
-        self.status = :pending_deposit
+        if self.has_deposited?
+          self.status = :deposited
+        else
+          self.status = :pending_deposit
+        end
         self.save
       else
         offer.errors.each do |key|
