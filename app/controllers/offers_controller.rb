@@ -19,9 +19,11 @@ class OffersController < ApplicationController
   def send_new_offer_notification
     NewOfferNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
-        content: "You offered to help on <a href='#{request_url(@request)}'>##{@request.id}</a>")
+        content: "You offered to help on <a href='#{request_url(@request)}'>##{@request.id}</a>",
+        event_type: Request.statuses[:pending_deposit])
     CancelOfferNotification.create(
         receiver_id: @request.requester_id,
-        content: "#{@request.selected_offer.carrier.email} offered to help you on <a href='#{request_url(@request)}'>##{@request.id}</a>")
+        content: "#{@request.selected_offer.carrier.email} offered to help you on <a href='#{request_url(@request)}'>##{@request.id}</a>",
+        event_type: Request.statuses[:pending_deposit])
   end
 end

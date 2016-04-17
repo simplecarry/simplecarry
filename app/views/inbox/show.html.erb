@@ -18,7 +18,9 @@
             <select id="filter-by" name="filter-by" class="form-control">
               <option value="">All</option>
               <%= Request.statuses.each do |k, v| %>
-                  <option value="<%= v %>"><%= status_name(k) %></option>
+                  <option value="<%= k %>" <%= 'selected' if k == params['filter-by']%>>
+                    <%= status_name(k) %>
+                  </option>
               <% end %>
             </select>
           </div>
@@ -26,16 +28,20 @@
       </div>
     </div>
     <br/>
-    <div class="row">
-      <table class="table table-hover">
-        <% @messages.each do |m| %>
-            <tr>
-              <td><%= determine_sender(m) %></td>
-              <td><%= m.content.html_safe %></td>
-              <td><%= m.created_at %></td>
-            </tr>
-        <% end %>
-      </table>
-    </div>
+    <% if @messages.empty? %>
+        <h4>You have no recent activities.</h4>
+    <% else %>
+        <div class="row">
+          <table class="table table-hover">
+            <% @messages.each do |m| %>
+                <tr>
+                  <td><%= determine_sender(m) %></td>
+                  <td><%= m.content.html_safe %></td>
+                  <td><%= m.created_at %></td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+    <% end %>
   </div>
 </div>

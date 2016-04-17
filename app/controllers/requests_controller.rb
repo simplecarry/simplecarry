@@ -55,28 +55,34 @@ class RequestsController < ApplicationController
   def send_deposit_notification
     DepositNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
-        content: "#{@request.requester.email} has deposited money for the request <a href='#{request_url(@request)}'>#{@request.id}</a>")
+        content: "#{@request.requester.email} has deposited money for the request <a href='#{request_url(@request)}'>#{@request.id}</a>",
+        event_type: Request.statuses[:deposited])
     DepositNotification.create(
         receiver_id: @request.requester_id,
-        content: "You deposited money for the request <a href='#{request_url(@request)}'>#{@request.id}</a>")
+        content: "You deposited money for the request <a href='#{request_url(@request)}'>#{@request.id}</a>",
+        event_type: Request.statuses[:deposited])
   end
 
   def send_buy_item_notification
     BuyItemNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
-        content: "You bought the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>")
+        content: "You bought the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>",
+        event_type: Request.statuses[:waiting_delivery])
     BuyItemNotification.create(
         receiver_id: @request.requester_id,
-        content: "#{@request.selected_offer.carrier.email} bought the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>")
+        content: "#{@request.selected_offer.carrier.email} bought the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>",
+        event_type: Request.statuses[:waiting_delivery])
   end
 
   def send_deliver_item_notification
     DeliverItemNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
-        content: "You delivered the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>")
+        content: "You delivered the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>",
+        event_type: Request.statuses[:completed])
     DeliverItemNotification.create(
         receiver_id: @request.requester_id,
-        content: "You received the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>")
+        content: "You received the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>",
+        event_type: Request.statuses[:completed])
   end
 
   def send_cancel_request_notification
