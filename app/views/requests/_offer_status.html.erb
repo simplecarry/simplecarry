@@ -6,10 +6,9 @@
     <% elsif @request.can_make_purchase?(current_user) %>
         <%= render 'item_bought_form' %>
     <% elsif @request.can_make_deliver?(current_user) %>
-        <form method="post" action="<%= item_delivered_request_path(@request) %>" class="btn-form">
-          <%= token_tag %>
-          <button type="submit" class="btn btn-success">Delivered!</button>
-        </form>
+        <%= render 'item_delivered_form' %>
+    <% elsif @request.can_give_review?(current_user) %>
+        <%= render 'review_form' %>
     <% end %>
 <% else %>
     <hr/>

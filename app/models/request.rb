@@ -94,6 +94,36 @@ class Request < ActiveRecord::Base
     self.save
   end
 
+  def can_give_review?(user)
+    self.completed? && (can_give_requester_review?(user) || can_give_helper_review?(user))
+  end
+
+  def can_give_requester_review?(user)
+    self.requester_id == user.id && Review.where(reviewer_id: user.id, request_id: self.id).empty?
+  end
+
+  def can_give_helper_review?(user)
+    self.selected_offer.carrier_id == user.id && Review.where(reviewer_id: user.id, request_id: self.id).empty?
+  end
+
+  def review(user, rating)
+    if can_give_review?(user)
+      data = {
+          reviewer_id: user.id,
+          score: rating,
+          offer_id: selected_offer.id,
+          request_id: id
+      }
+      if can_give_requester_review?(user)
+        data = data.merge(reviewee_id: selected_offer.carrier_id)
+      elsif can_give_helper_review?(user)
+        data = data.merge(reviewee_id: requester_id)
+      end
+      new_review = Review.create(data)
+      update_score(new_review.reviewee_id)
+    end
+  end
+
   def check_validate?
     check_validate == 'active'
   end
@@ -116,5 +146,13 @@ class Request < ActiveRecord::Base
 
   def status_to_s
     self.status.capitalize.split('_').join(' ')
+  end
+
+  private
+  def update_score(reviewee_id)
+    score = Review.where(reviewee_id: reviewee_id).average(:score)
+    reviewee = User.find_by_id(reviewee_id)
+    reviewee.current_score = score
+    reviewee.save
   end
 end

@@ -18,4 +18,14 @@ module RequestsHelper
   def status_name(status)
     status.gsub('_', ' ').capitalize
   end
+
+  def reviewee_name(request)
+    if request.can_give_requester_review?(current_user)
+      request.selected_offer.carrier.email
+    elsif request.can_give_helper_review?(current_user)
+      request.requester.email
+    else
+      ''
+    end
+  end
 end

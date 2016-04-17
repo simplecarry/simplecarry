@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       post 'item_delivered'
       post 'cancel_request'
       post 'cancel_offer'
+      post 'rate'
     end
     resources :offers
   end

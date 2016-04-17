@@ -1,0 +1,29 @@
+<button class="btn btn-success" data-toggle="modal" data-target="#review-modal">
+  Rate this person
+</button>
+<div class="modal fade" id="review-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <form method="post" action="<%= rate_request_path(@request) %>">
+      <%= token_tag %>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Review for <%= reviewee_name(@request) %></h4>
+        </div>
+        <div class="modal-body">
+          <p>How many stars would you give this person?</p>
+          <% (1..5).each do |number| %>
+              <label class="radio-inline">
+                <input type="radio" name="rating" value="<%= number %>"> <%= number %>
+              </label>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Confirm</button>
+          <button type="reset" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

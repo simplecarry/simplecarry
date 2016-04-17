@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417090128) do
+ActiveRecord::Schema.define(version: 20160417100354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,19 @@ ActiveRecord::Schema.define(version: 20160417090128) do
   add_index "requests", ["description"], name: "index_requests_on_description", using: :btree
   add_index "requests", ["name"], name: "index_requests_on_name", using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "score",      default: 1
+    t.integer  "reviewer_id"
+    t.integer  "reviewee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "offer_id"
+    t.integer  "request_id"
+  end
+
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_from_id", using: :btree
+  add_index "reviews", ["reviewee_id"], name: "index_reviews_on_to_id", using: :btree
+
   create_table "travel_plans", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.string   "country",     null: false
@@ -111,6 +124,7 @@ ActiveRecord::Schema.define(version: 20160417090128) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "avatar"
+    t.integer  "current_score",          default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -124,5 +138,7 @@ ActiveRecord::Schema.define(version: 20160417090128) do
   add_foreign_key "requests", "locations", column: "delivery_location_id"
   add_foreign_key "requests", "locations", column: "selling_location_id"
   add_foreign_key "requests", "users", column: "requester_id"
+  add_foreign_key "reviews", "users", column: "from_id"
+  add_foreign_key "reviews", "users", column: "to_id"
   add_foreign_key "travel_plans", "users"
 end

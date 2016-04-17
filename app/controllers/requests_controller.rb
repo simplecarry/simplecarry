@@ -1,14 +1,14 @@
 class RequestsController < ApplicationController
   before_action :load_request, only: [:show, :deposit, :item_bought,
                                       :item_delivered, :cancel_request,
-                                      :cancel_offer]
+                                      :cancel_offer, :rate]
 
   def index
     @requests = Request.all
     unless params[:location].blank? || params[:location] == "All"
       @requests = Location.find_by_name(params[:location]).requests
     end
-    
+
     if params[:order] == "Status"
       @requests = @requests.ordered_by_status
       if params[:search]
@@ -52,6 +52,11 @@ class RequestsController < ApplicationController
   def cancel_offer
     @request.cancel_offer
     send_cancel_offer_notification
+    redirect_to action: :show, id: params[:id]
+  end
+
+  def rate
+    @request.review(current_user, params[:rating])
     redirect_to action: :show, id: params[:id]
   end
 
