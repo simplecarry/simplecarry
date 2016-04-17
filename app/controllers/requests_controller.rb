@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   before_action :load_request, only: [:show, :deposit, :item_bought,
                                       :item_delivered, :cancel_request,
                                       :cancel_offer]
+  before_action :load_comment, only: [:show]
 
   def index
     @requests = Request.all
@@ -53,5 +54,9 @@ class RequestsController < ApplicationController
   private
   def load_request
     @request = Request.find_by_id(params[:id])
+  end
+
+  def load_comment
+    @comments = @request.comments
   end
 end

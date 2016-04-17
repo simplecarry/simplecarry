@@ -2,6 +2,7 @@ class Request < ActiveRecord::Base
   belongs_to :delivery_method
   belongs_to :selling_location, class_name: 'Location'
   belongs_to :delivery_location, class_name: 'Location'
+  has_many :comments, dependent: :destroy
   has_one :selected_offer, class_name: 'Offer'
 
   belongs_to :requester, class_name: 'User'

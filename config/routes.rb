@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :new_request
+  resources :comments
   resources :requests do
     member do
       post 'deposit'
