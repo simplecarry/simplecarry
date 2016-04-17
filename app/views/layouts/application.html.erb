@@ -7,45 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-default bg-faded">
-  <a class="navbar-brand " href="/"><img src="/assets/simple carry.png" width="150px" height="30px"></a>
-  <ul class="nav navbar-nav pull-right">
-    <li class="nav-item">
-      <a class="nav-link" <%= link_to "Browse", travel_plans_path%></a>
-    </li>
-    <% if user_signed_in?%>
-        <li class="nav-item">
-          <a class="nav-link" <%=link_to "Post request", '/new_request'%></a>
-        </li>
-        <li class="nav-item">
-          <!--TODO:hieu map bo path vao-->
-          <a class="nav-link" <%=link_to "Post travel plan", new_travel_plan_path%></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" <%=link_to "Sign out", destroy_user_session_path, method: :delete%></a>
-        </li>
-    <%else%>
-    <li class="nav-item">
-      <a class="nav-link" <%= link_to "Login/Register", new_user_session_path%></a>
-    </li>
-    <%end%>
-    <li class="nav-item">
-      <!--TODO:hieu map bo path vao-->
-      <a class="nav-link" <%= link_to "Search", root_path%></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About Us</a>
-    </li>
-  </ul>
-  </nav>
-
+<%= render 'layouts/header' %>
 <%= yield %>
-<div class="footer">
-  <div class="container sb-slide">
-    <p class="contactUs"><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;72 Lê Thánh Tôn, Phường Bến Thánh, Q1, HCMC, VietNam</p>
-    <p class="contactUs"><i class="glyphicon glyphicon-earphone"></i>&nbsp;&nbsp;+84 90 674 8189</p>
-    <p class="contactUs"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;<a href="">support@simple.com</a></p><br>
-  </div>
-  </div>
+<%= render 'layouts/footer' %>
 </body>
 </html>
