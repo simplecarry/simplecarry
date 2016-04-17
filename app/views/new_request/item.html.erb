@@ -1,29 +1,39 @@
-<h1>Item</h1>
-<%= render 'form_error' %>
-<%= form_for @request, url: wizard_path, method: :put do |f| %>
-    <ul>
-      <div class="field">
-        <li>
-          <%= f.label :name %><br>
-          <%= f.text_field :name %>
-        </li>
-        <li>
-          <%= f.label :description %><br>
-          <%= f.text_area :description %>
-        </li>
-        <li>
-          <%= f.label :picture_url %> <br>
-          <%= f.text_field :picture_url %>
-        </li>
-        <li>
-          <%= f.label :links, "Link to item" %> <br>
-          <%= f.text_field :links, placeholder: "Optional" %>
-        </li>
-        <li>
-          <div class="actions">
-            <%= f.submit "Continue" %>
-          </div>
-        </li>
-      </div>
-    </ul>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h4>
+      1. Item 
+        <span class="subtext">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
+          2. Location 
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          3. Price
+        </span>
+    </h4>
+    <%= render 'form_error' %>
+    <%= form_for @request, url: wizard_path, method: :put do |f| %>
+              <div class="form-group">
+                <%= f.label :name, "Item name" %>
+                <%= f.text_field :name, class:"form-control",
+              placeholder: "What do you want to buy?"%>
+              </div>
+              <div class="form-group">
+                <%= f.label :description, "Item description"%>
+                <%= f.text_area :description, class:"form-control", 
+                  placeholder:"Describe your item e.g. size, quantity, colour, packaging, how to buy" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :picture_url,"Picture(url)" %>
+                <%= f.text_field :picture_url,placeholder: "Optional", class:"form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :links, "Link to item" %>
+                <%= f.text_field :links, placeholder: "Optional", class:"form-control" %>
+              </div>
+            <%= button_tag(type: "submit", class: "btn btn-primary", name: "commit", value: "conceal") do %>
+              Continue 
+              <span class="glyphicon glyphicon-chevron-right" style = "color: white" aria-hidden="true"></span>
+          <% end %> 
+              
+    <% end %>
+  </div>
+</div>

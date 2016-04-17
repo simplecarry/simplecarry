@@ -1,22 +1,36 @@
-<h1>Location</h1>
-
-<%= render 'form_error' %>
-<%= form_for @request, url: wizard_path, method: :put do |f| %>
-  <ul>
-    <div class="field">
-      <li>
-        <%= f.label :selling_location_id, "Sell Location" %> <br>
-        <%= f.collection_select :selling_location_id, Location.all, :id, :name %>
-      </li>
-      <li>
-        <%= f.label :delivery_method_id, "Delivery option" %> <br>
-        <%= f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name %>
-      </li>
-    <div>
-    <li>
-      <div class="actions">
-        <%= f.submit "Continue" %>
-      </div>
-    </li>
-  </ul>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h4>
+        <span class="subtext">
+          1. Item 
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </span> 
+        2. Location 
+        <span class="subtext">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          3. Price
+        </span>
+    </h4>
+    <%= render 'form_error' %>
+    <%= form_for @request, url: wizard_path, method: :put do |f| %>
+            <div class="form-group">
+              <%= f.label :selling_location_id, "Sell Location" %> <br>
+              <%= f.collection_select :selling_location_id, Location.all, :id, :name,{},
+                {class: "form-control"}%>
+            </div>
+            <div class="form-group">
+              <%= f.label :delivery_method_id, "Delivery option" %> <br>
+              <%= f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name,
+                {},{class: "form-control"}%>
+            </div>
+            <%= link_to previous_wizard_path, class: "btn btn-default" do %>
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+            <% end %>
+            <%= button_tag(type: "submit", class: "btn btn-primary", 
+                           name: "commit", value: "conceal") do %>
+              Continue 
+              <span class="glyphicon glyphicon-chevron-right" style = "color: white" aria-hidden="true"></span>
+            <% end %> 
+    <% end %>
+  </div>
+</div>

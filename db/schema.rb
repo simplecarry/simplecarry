@@ -82,14 +82,14 @@ ActiveRecord::Schema.define(version: 20160417102204) do
     t.text     "description"
     t.integer  "delivery_method_id"
     t.string   "picture_url"
-    t.integer  "offer_price"
-    t.integer  "quantity",             default: 1
-    t.integer  "status",               default: 0
-    t.integer  "requester_id"
+    t.integer  "offer_price",                          null: false
+    t.integer  "quantity",             default: 1,     null: false
+    t.integer  "status",               default: 0,     null: false
+    t.integer  "requester_id",                         null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.integer  "selling_location_id"
-    t.integer  "delivery_location_id"
+    t.integer  "selling_location_id",                  null: false
+    t.integer  "delivery_location_id",                 null: false
     t.string   "check_validate",       default: ""
     t.string   "links"
     t.boolean  "has_deposited",        default: false
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 20160417102204) do
     t.integer  "request_id"
   end
 
-  add_index "reviews", ["reviewee_id"], name: "index_reviews_on_to_id", using: :btree
-  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_from_id", using: :btree
+  add_index "reviews", ["reviewee_id"], name: "index_reviews_on_reviewee_id", using: :btree
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
 
   create_table "travel_plans", force: :cascade do |t|
     t.integer  "user_id",     null: false
