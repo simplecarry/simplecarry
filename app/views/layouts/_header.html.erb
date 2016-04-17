@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default bg-faded">
+  <a class="navbar-brand " href="/"><img src="/assets/simple carry.png" width="150px" height="30px"></a>
+  <ul class="nav navbar-nav pull-right">
+    <li class="nav-item">
+      <a class="nav-link" href="<%= travel_plans_path %>">Browse</a>
+    </li>
+    <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= '/new_request' %>">New Request</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_travel_plan_path %>">New Travel Plan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= inbox_path %>">Inbox</a>
+        </li>
+    <% end %>
+    <li class="nav-item">
+      <a class="nav-link" href="#about-us">About Us</a>
+    </li>
+    <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+    <% end %>
+    <% if not user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path %>">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_registration_path %>">Register</a>
+        </li>
+    <% end %>
+  </ul>
+</nav>

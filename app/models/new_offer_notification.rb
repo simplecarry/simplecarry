@@ -1,0 +1,2 @@
+class NewOfferNotification < Notification
+end

@@ -1,0 +1,2 @@
+class NewRequestNotification < Notification
+end

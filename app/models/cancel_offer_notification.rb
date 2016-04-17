@@ -1,0 +1,2 @@
+class CancelOfferNotification < Notification
+end
