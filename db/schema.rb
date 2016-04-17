@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417035747) do
+ActiveRecord::Schema.define(version: 20160417041053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 20160417035747) do
   add_index "messages", ["request_id"], name: "index_messages_on_request_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
+  create_table "notifications", force: :cascade do |t|
+    t.string   "type"
+    t.text     "content"
+    t.integer  "receiver_id"
+    t.integer  "sender_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
+  add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id", using: :btree
+  add_index "notifications", ["type"], name: "index_notifications_on_type", using: :btree
+
   create_table "offers", force: :cascade do |t|
     t.integer  "carrier_id",   null: false
     t.integer  "price",        null: false
@@ -57,14 +70,14 @@ ActiveRecord::Schema.define(version: 20160417035747) do
     t.text     "description"
     t.integer  "delivery_method_id"
     t.string   "picture_url"
-    t.integer  "offer_price",                          null: false
-    t.integer  "quantity",             default: 1,     null: false
-    t.integer  "status",               default: 0,     null: false
-    t.integer  "requester_id",                         null: false
+    t.integer  "offer_price"
+    t.integer  "quantity",             default: 1
+    t.integer  "status",               default: 0
+    t.integer  "requester_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.integer  "selling_location_id",                  null: false
-    t.integer  "delivery_location_id",                 null: false
+    t.integer  "selling_location_id"
+    t.integer  "delivery_location_id"
     t.string   "check_validate",       default: ""
     t.string   "links"
     t.boolean  "has_deposited",        default: false
@@ -104,6 +117,8 @@ ActiveRecord::Schema.define(version: 20160417035747) do
 
   add_foreign_key "messages", "requests"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users", column: "receiver_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "offers", "users", column: "carrier_id"
   add_foreign_key "requests", "locations", column: "delivery_location_id"
   add_foreign_key "requests", "locations", column: "selling_location_id"
