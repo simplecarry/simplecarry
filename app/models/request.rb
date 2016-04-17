@@ -37,8 +37,22 @@ class Request < ActiveRecord::Base
     self.save
   end
 
+  def item_bought
+    self.status = :waiting_delivery
+    self.save
+  end
+
+  def item_delivered
+    self.status = :completed
+    self.save
+  end
+
   def can_make_purchase?(user)
     deposited? && user.id == self.selected_offer.carrier_id
+  end
+
+  def can_make_deliver?(user)
+    waiting_delivery? && user.id == self.requester_id
   end
 
   def new_offer(user, price = self.offer_price, arrival_date = Date.now)
@@ -62,6 +76,17 @@ class Request < ActiveRecord::Base
       self.errors.add(:base, 'Can only make new offer on open request')
     end
     self
+  end
+
+  def cancel
+    self.selected_offer.delete
+    self.delete
+  end
+
+  def cancel_offer
+    self.selected_offer.delete
+    self.status = :open
+    self.save
   end
 
   def check_validate?

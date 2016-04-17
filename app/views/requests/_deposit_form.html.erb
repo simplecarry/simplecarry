@@ -1,8 +1,15 @@
+<hr/>
 <%= flash_messages(@request) %>
-<button id="js-offer-help-btn" class="btn btn-primary"
+<button id="js-offer-help-btn" class="btn btn-success"
         data-toggle="modal" data-target="#deposit-modal">
   Deposit Money
 </button>
+<form method="post" action="<%= cancel_request_request_path(@request) %>" class="btn-form">
+  <%= token_tag %>
+  <button type="submit" class="btn btn-danger">Cancel Request</button>
+</form>
+
+<!--BEGIN deposit dialog-->
 <div class="modal fade" id="deposit-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-md" role="document">
     <form method="post" action="<%= deposit_request_path(@request) %>">
@@ -64,3 +71,4 @@
     </form>
   </div>
 </div>
+<!--END deposit dialog-->

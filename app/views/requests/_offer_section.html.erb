@@ -1,5 +1,5 @@
 <% if @request.open? %>
     <%= render 'offer_form' %>
-<% elsif @request.pending_deposit? || @request.deposited? %>
+<% else %>
     <%= render 'offer_status' %>
 <% end %>

@@ -66,6 +66,9 @@
         <span class="glyphicon glyphicon-tag"></span>
         VND <%= @request.offer_price %>
       </p>
+      <p>
+        <%= friendly_status(@request) %>
+      </p>
 
       <%= render 'offer_section' %>
     </div>
