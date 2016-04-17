@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417100354) do
+ActiveRecord::Schema.define(version: 20160417102204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,14 +82,14 @@ ActiveRecord::Schema.define(version: 20160417100354) do
     t.text     "description"
     t.integer  "delivery_method_id"
     t.string   "picture_url"
-    t.integer  "offer_price",                          null: false
-    t.integer  "quantity",             default: 1,     null: false
-    t.integer  "status",               default: 0,     null: false
-    t.integer  "requester_id",                         null: false
+    t.integer  "offer_price"
+    t.integer  "quantity",             default: 1
+    t.integer  "status",               default: 0
+    t.integer  "requester_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.integer  "selling_location_id",                  null: false
-    t.integer  "delivery_location_id",                 null: false
+    t.integer  "selling_location_id"
+    t.integer  "delivery_location_id"
     t.string   "check_validate",       default: ""
     t.string   "links"
     t.boolean  "has_deposited",        default: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20160417100354) do
   add_index "requests", ["name"], name: "index_requests_on_name", using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "score",      default: 1
+    t.integer  "score",       default: 1
     t.integer  "reviewer_id"
     t.integer  "reviewee_id"
     t.datetime "created_at"
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 20160417100354) do
     t.integer  "request_id"
   end
 
-  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_from_id", using: :btree
   add_index "reviews", ["reviewee_id"], name: "index_reviews_on_to_id", using: :btree
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_from_id", using: :btree
 
   create_table "travel_plans", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 20160417100354) do
   add_foreign_key "requests", "locations", column: "delivery_location_id"
   add_foreign_key "requests", "locations", column: "selling_location_id"
   add_foreign_key "requests", "users", column: "requester_id"
-  add_foreign_key "reviews", "users", column: "from_id"
-  add_foreign_key "reviews", "users", column: "to_id"
+  add_foreign_key "reviews", "users", column: "reviewee_id"
+  add_foreign_key "reviews", "users", column: "reviewer_id"
   add_foreign_key "travel_plans", "users"
 end
