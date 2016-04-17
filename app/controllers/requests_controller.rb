@@ -5,13 +5,21 @@ class RequestsController < ApplicationController
 
   def index
     @requests = Request.all
-    if params[:location]
+    unless params[:location].blank? || params[:location] == "All"
       @requests = Location.find_by_name(params[:location]).requests
     end
     
-    if params[:order] == "status"
-      @requests = Request.ordered_by_status
+    if params[:order] == "Status"
+      @requests = @requests.ordered_by_status
+      if params[:search]
+        @requests = @requests.search(params[:search])
+      end
     end
+
+    if params[:search]
+      @requests = @requests.search(params[:search])
+    end
+
   end
 
   def show
