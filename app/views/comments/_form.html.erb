@@ -1,8 +1,27 @@
-<hr \>
-<%= form_for Comment.new, url:comments_path,
-  html: {class: "form center"} do |f| %>
-  <%= f.hidden_field :request_id, :value => @request.id %>
-  <%= f.text_area :content, class:"form-control" %>
-  <br \>
-  <%= f.submit "Submit", class:"btn btn-primary " %>
+<% unless current_user.nil? %>
+    <div class="row">
+      <div class="col-md-2" style="padding: 0px">
+          <img class="img-circle avatar pull-right" 
+          src=<%= current_user.avatar%>>
+      </div>
+      <div class="col-md-10 ">
+        <%= form_for Comment.new, url:comments_path,
+          html: {class: "form center"} do |f| %>
+          <%= f.hidden_field :request_id, :value => @request.id %>
+          <%= f.text_area :content, class:"form-control" %>
+          <br \>
+          <%= f.submit "Submit", class:"btn btn-primary " %>
+        <% end %>
+      </div>
+    </div>
+  <br />
+<% else %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="text-center">
+        <a href="<%= new_user_session_path %>" class="btn btn-success">Sign in to comment</a>
+      </div>
+    </div>
+  </div>
+  <br />
 <% end %>
