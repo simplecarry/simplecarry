@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417090128) do
+ActiveRecord::Schema.define(version: 20160417102204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "request_id"
+  end
+
+  add_index "comments", ["request_id"], name: "index_comments_on_request_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "delivery_methods", force: :cascade do |t|
     t.string   "name",        null: false
@@ -71,14 +82,14 @@ ActiveRecord::Schema.define(version: 20160417090128) do
     t.text     "description"
     t.integer  "delivery_method_id"
     t.string   "picture_url"
-    t.integer  "offer_price"
-    t.integer  "quantity",             default: 1
-    t.integer  "status",               default: 0
-    t.integer  "requester_id"
+    t.integer  "offer_price",                          null: false
+    t.integer  "quantity",             default: 1,     null: false
+    t.integer  "status",               default: 0,     null: false
+    t.integer  "requester_id",                         null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.integer  "selling_location_id"
-    t.integer  "delivery_location_id"
+    t.integer  "selling_location_id",                  null: false
+    t.integer  "delivery_location_id",                 null: false
     t.string   "check_validate",       default: ""
     t.string   "links"
     t.boolean  "has_deposited",        default: false
@@ -98,24 +109,26 @@ ActiveRecord::Schema.define(version: 20160417090128) do
   add_index "travel_plans", ["user_id"], name: "index_travel_plans_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",                                                 null: false
+    t.string   "encrypted_password",     default: "",                                                 null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,                                                  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "avatar"
+    t.datetime "created_at",                                                                          null: false
+    t.datetime "updated_at",                                                                          null: false
+    t.string   "avatar",                 default: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "requests"
+  add_foreign_key "comments", "users"
   add_foreign_key "messages", "requests"
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "users", column: "receiver_id"
