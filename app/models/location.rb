@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
+  has_many :travel_plans
 
   def requests
     Request.where("selling_location_id = ?", id)
