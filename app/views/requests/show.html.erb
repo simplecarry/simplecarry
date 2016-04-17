@@ -17,11 +17,9 @@
             <div class="media-body">
               <h4 class="media-heading"><%= @request.requester.email %></h4>
               <div class="user-rating">
-                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                <% (1..5).each do |number| %>
+                    <span class="glyphicon <%= rating_class_name(@request.requester.current_score, number) %>" aria-hidden="true"></span>
+                <% end %>
               </div>
             </div>
           </div>

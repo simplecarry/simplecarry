@@ -28,4 +28,12 @@ module RequestsHelper
       ''
     end
   end
+
+  def rating_class_name(rating, star_number)
+    if star_number <= rating
+      'glyphicon-star'
+    else
+      'glyphicon-star-empty'
+    end
+  end
 end
