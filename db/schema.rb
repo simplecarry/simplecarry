@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417102204) do
+ActiveRecord::Schema.define(version: 20160417172848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,17 +108,18 @@ ActiveRecord::Schema.define(version: 20160417102204) do
     t.integer  "request_id"
   end
 
-  add_index "reviews", ["reviewee_id"], name: "index_reviews_on_to_id", using: :btree
-  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_from_id", using: :btree
+  add_index "reviews", ["reviewee_id"], name: "index_reviews_on_reviewee_id", using: :btree
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
 
   create_table "travel_plans", force: :cascade do |t|
     t.integer  "user_id",     null: false
-    t.string   "country",     null: false
     t.datetime "return_date", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "location_id"
   end
 
+  add_index "travel_plans", ["location_id"], name: "index_travel_plans_on_location_id", using: :btree
   add_index "travel_plans", ["user_id"], name: "index_travel_plans_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -153,5 +154,6 @@ ActiveRecord::Schema.define(version: 20160417102204) do
   add_foreign_key "requests", "users", column: "requester_id"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
+  add_foreign_key "travel_plans", "locations"
   add_foreign_key "travel_plans", "users"
 end

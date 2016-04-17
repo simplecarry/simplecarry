@@ -1,19 +1,30 @@
-<h1>
-  Price
-</h1>
-<%= render 'form_error' %>
-<%= form_for @request, url: wizard_path, method: :put do |f| %>
-  <ul>
-    <div class="field">
-      <li>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h4>
+        <span class="subtext">
+          1. Item 
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          2. Location 
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </span>
+        3. Price
+    </h4>
+    <%= render 'form_error' %>
+    <%= form_for @request, url: wizard_path, method: :put do |f| %>
+      <div class="form-group">
         <%= f.label :offer_price %><br>
-        <%= f.text_field :offer_price %>
-      </li>
-    <div>
-    <li>
-      <div class="actions">
-        <%= f.submit "Continue" %>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">VND</span>
+          <%= f.text_field :offer_price, class:"form-control" %>
+        </div>
       </div>
-    </li>
-  </ul>
-<% end %>
+      <%= link_to previous_wizard_path, class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Back
+      <% end %>
+      <div class="pull-right">
+        <%= f.submit "Submit", class:"btn btn-success", style:"width:100px" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
