@@ -14,4 +14,8 @@ module RequestsHelper
     end
     message.html_safe
   end
+
+  def status_name(status)
+    status.gsub('_', ' ').capitalize
+  end
 end

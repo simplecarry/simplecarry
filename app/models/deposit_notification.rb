@@ -1,0 +1,2 @@
+class DepositNotification < Notification
+end

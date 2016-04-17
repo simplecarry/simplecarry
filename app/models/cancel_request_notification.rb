@@ -1,0 +1,2 @@
+class CancelRequestNotification < Notification
+end
