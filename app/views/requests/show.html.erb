@@ -40,17 +40,13 @@
         <span class="glyphicon glyphicon-map-marker"></span>
         Shop in <%= @request.selling_location.name %>
       </p>
+      <% if @request.delivery_location%>
       <br/>
       <p>
         <span class="glyphicon glyphicon-map-marker"></span>
         Deal in <%= @request.delivery_location.name %>
       </p>
-      <br/>
-      <p>
-        <span class="glyphicon glyphicon-map-marker"></span>
-        Deal in <%= @request.delivery_location.name %>
-      </p>
-      <br/>
+      <%end%>
       <h5><%= @request.delivery_method.name %></h5>
       <p><%= @request.delivery_method.description %></p>
       <% if @request.links %>

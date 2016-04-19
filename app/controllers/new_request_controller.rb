@@ -32,6 +32,7 @@ class NewRequestController < ApplicationController
         @request = current_user.requests.new(session[:request])
         @request.check_validate = "active"
         @request.status = :open
+        @request.delivery_location_id =
         if @request.save
           send_new_request_notification
           redirect_to root_path
