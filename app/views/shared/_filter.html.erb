@@ -1,33 +1,33 @@
-<%= form_tag requests_path, method: "get"  do %>
-  <%= label_tag "Location:" %>
-  <% unless params[:location].blank? %> 
-    <% if params[:location] == "All" %>
-      <%= select_tag "location", 
-        options_from_collection_for_select(Location.have_request.unshift(Request.new(name: "All")),:name,:name,"All"),  
-        onchange: "this.form.submit();" %>
-    <% else %>
-      <%= select_tag "location", 
-        options_from_collection_for_select(Location.have_request.unshift(Request.new(name: "All")),:name,:name,
-                                          Location.find_by_name(params[:location]).name),  
-        onchange: "this.form.submit();" %>
+<div class="container-fluid">
+    <%= form_tag requests_path, method: "get"  do %>
+        <%= label_tag "Location:" %>
+        <% unless params[:location].blank? %>
+            <% if params[:location] == "All" %>
+                <%= select_tag "location",
+                               options_from_collection_for_select(Location.have_request.unshift(Request.new(name: "All")),:name,:name,"All"),
+                               onchange: "this.form.submit();" %>
+            <% else %>
+                <%= select_tag "location",
+                               options_from_collection_for_select(Location.have_request.unshift(Request.new(name: "All")),:name,:name,
+                                                                  Location.find_by_name(params[:location]).name),
+                               onchange: "this.form.submit();" %>
+            <% end %>
+        <% else %>
+            <%= select_tag "location",
+                           options_from_collection_for_select(Location.have_request.unshift(
+                                                                      Request.new(name: "All")),:name,:name, "All"),
+                           onchange: "this.form.submit();" %>
+        <% end %>
+        <%= label_tag "Order:" %>
+        <% if params[:order].blank? %>
+            <%= select_tag "order", options_for_select(["Lastest", "Status" ],"Lastest"),
+                           onchange: "this.form.submit();" %>
+        <% else %>
+            <%= select_tag "order", options_for_select(["Lastest", "Status" ], params[:order]),
+                           onchange: "this.form.submit();" %>
+        <% end %>
+        <% if params[:search] %>
+            <%= hidden_field_tag :search, params[:search] %>
+        <% end %>
     <% end %>
-  <% else %>
-    <%= select_tag "location", 
-      options_from_collection_for_select(Location.have_request.unshift(
-        Request.new(name: "All")),:name,:name, "All"), 
-      onchange: "this.form.submit();" %>
-  <% end %>
-  <%= label_tag "Order:" %>
-  <% if params[:order].blank? %>
-    <%= select_tag "order", options_for_select(["Lastest", "Status" ],"Lastest"),
-      onchange: "this.form.submit();" %>
-  <% else %>
-    <%= select_tag "order", options_for_select(["Lastest", "Status" ], params[:order]),
-      onchange: "this.form.submit();" %>
-  <% end %>
-  <% if params[:search] %>
-    <%= hidden_field_tag :search, params[:search] %>
-  <% end %>
-
-<% end %>
-
+</div>
