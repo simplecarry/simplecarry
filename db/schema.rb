@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 20160417172848) do
     t.integer  "request_id"
   end
 
-  add_index "reviews", ["reviewee_id"], name: "index_reviews_on_reviewee_id", using: :btree
-  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
+  add_index "reviews", ["reviewee_id"], name: "index_reviews_on_to_id", using: :btree
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_from_id", using: :btree
 
   create_table "travel_plans", force: :cascade do |t|
     t.integer  "user_id",     null: false

@@ -12,7 +12,7 @@
 <!--BEGIN deposit dialog-->
 <div class="modal fade" id="deposit-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-md" role="document">
-    <form method="post" action="<%= deposit_request_path(@request) %>">
+    <form method="post" action="<%= deposit_request_path(@request) %>" id="deposit-form">
       <%= token_tag %>
       <div class="modal-content">
         <div class="modal-header">
@@ -32,13 +32,17 @@
             </div>
             <div class="panel-body">
               <div class="row">
+                <div class="col-xs-12 payment-errors"></div>
+              </div>
+              <div class="row">
                 <div class="col-xs-12">
                   <div class="form-group">
                     <label for="cardNumber">CARD NUMBER</label>
                     <div class="input-group">
-                      <input type="tel" value="1234567890"
+                      <input type="tel" value="4242424242424242"
                              class="form-control"
-                             name="cardNumber"
+                             data-stripe="number"
+                             size="20"
                              placeholder="Valid Card Number"/>
                       <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                     </div>
@@ -46,17 +50,30 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-7 col-md-7">
+                <div class="col-xs-4 col-md-4">
                   <div class="form-group">
-                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span>
-                      DATE</label>
-                    <input type="tel" class="form-control" name="cardExpiry" value="02/99"/>
+                    <label for="cardExpiry">
+                      <span class="hidden-xs">EXPIRATION</span>
+                      <span class="visible-xs-inline">EXP</span>
+                      MONTH
+                    </label>
+                    <input type="text" maxlength="2" class="form-control" id="cardExpiry" data-stripe="exp-month" value="12"/>
                   </div>
                 </div>
-                <div class="col-xs-5 col-md-5 pull-right">
+                <div class="col-xs-4 col-md-4">
                   <div class="form-group">
-                    <label for="cardCVC">CV CODE</label>
-                    <input type="tel" class="form-control" name="cardCVC" value="123"/>
+                    <label for="cardExpiry">
+                      <span class="hidden-xs">EXPIRATION</span>
+                      <span class="visible-xs-inline">EXP</span>
+                      YEAR
+                    </label>
+                    <input type="text" maxlength="4" class="form-control" data-stripe="exp-year" value="2020"/>
+                  </div>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                  <div class="form-group">
+                    <label for="cardCVC">CVC</label>
+                    <input type="text" maxlength="3" class="form-control" id="cardCVC" data-stripe="cvc" value="123"/>
                   </div>
                 </div>
               </div>

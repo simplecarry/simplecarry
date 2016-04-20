@@ -33,10 +33,22 @@ class Request < ActiveRecord::Base
     has_offered? && user.id == requester_id
   end
 
-  def make_deposit
+  def make_deposit(stripe_token)
+    # Set your secret key: remember to change this to your live secret key in production
+    # See your keys here https://dashboard.stripe.com/account/apikeys
+    Stripe.api_key = 'sk_test_Dpwz47km7ZMFxoJi1rb2ucrJ'
+
+    charge = Stripe::Charge.create(
+        :amount => selected_offer.price,
+        :currency => 'vnd',
+        :source => stripe_token,
+        :description => "Deposit for request #{id}"
+    )
     self.status = :deposited
     self.has_deposited = true
     self.save
+
+    charge
   end
 
   def item_bought

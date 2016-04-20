@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
     unless params[:location].blank? || params[:location] == "All"
       @requests = Location.find_by_name(params[:location]).requests
     end
-    
+
     if params[:order] == "Status"
       @requests = @requests.ordered_by_status
       if params[:search]
@@ -27,8 +27,12 @@ class RequestsController < ApplicationController
   end
 
   def deposit
-    @request.make_deposit
-    send_deposit_notification
+    begin
+      @request.make_deposit(params[:stripe_token])
+      send_deposit_notification
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+    end
     redirect_to action: :show, id: params[:id]
   end
 
@@ -66,6 +70,7 @@ class RequestsController < ApplicationController
   def load_comment
     @comments = @request.comments
   end
+
   def send_deposit_notification
     DepositNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
