@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default bg-faded">
-  <a class="navbar-brand " href="/"><img src="/simple_carry.png" width="150px" height="30px"></a>
+  <a class="navbar-brand " href="/"><img src="/easycarry6.png" width="150px" height="40px"></a>
   <ul class="nav navbar-nav pull-right">
     <li class="nav-item">
       <a class="nav-link" href="<%= travel_plans_path %>">Browse</a>
     </li>
     <% if user_signed_in? %>
         <li class="nav-item">
-          <a class="nav-link" href="<%= '/new_request' %>">New Request</a>
+          <a class="nav-link" style="color: white" href="<%= '/new_request' %>">New Request</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%= new_travel_plan_path %>">New Travel Plan</a>

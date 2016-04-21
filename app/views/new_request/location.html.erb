@@ -14,7 +14,7 @@
     <%= render 'form_error' %>
     <%= form_for @request, url: wizard_path, method: :put do |f| %>
             <div class="form-group">
-              <%= f.label :selling_location_id, "Sell Location" %> <br>
+              <%= f.label :selling_location_id, "Country to buy from" %> <br>
               <%= f.collection_select :selling_location_id, Location.all, :id, :name,{},
                 {class: "form-control"}%>
             </div>

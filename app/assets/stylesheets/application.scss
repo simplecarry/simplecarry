@@ -8,8 +8,9 @@
 
 .footer {
   clear: both;
-  background: #f8f8f8;
+  background: #0D47A1;
   width: 100%;
+  color: #fff;
 }
 
 .inline {
@@ -78,4 +79,33 @@
 
 .panel .panel-thumbnail {
   padding: 0;
+}
+
+.navbar-default {
+  height: 60px;
+  background: #0D47A1;
+}
+
+.nav-link{
+  color: white;
+}
+
+img{
+  margin-top: -11px;
+}
+
+body{
+  color: #0D47A1;
+}
+
+.form-inline{
+  margin-bottom: 20px;
+}
+
+h1{
+  font-size: 60px;
+}
+
+.navbar-default .navbar-nav > li > a{
+  color: #fff;
 }
