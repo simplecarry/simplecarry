@@ -6,7 +6,7 @@ class OffersController < ApplicationController
     if @request.errors.empty?
       send_new_offer_notification
     else
-      flash[:error] = 'Unable to create offer'
+      flash[:error] = "Unable to create offer"
     end
     redirect_to request_path(@request)
   end

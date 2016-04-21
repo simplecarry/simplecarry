@@ -6,7 +6,7 @@ class TravelPlansController < ApplicationController
   def create
     @travel_plan = current_user.travel_plans.new(date_params)
     if @travel_plan.save
-      flash[:sucess] = "Add travel plan successful"
+      flash[:sucess] = "Your travel plan is addded successfully"
       redirect_to root_path
     else
       render "new"
