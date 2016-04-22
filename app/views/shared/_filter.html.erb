@@ -1,7 +1,6 @@
-<div class="container-fluid">
     <%= form_tag requests_path, method: "get", class: "form-inline"  do %>
         <div class="form-group">
-          <%= label_tag "Location:" %>
+          <%= label_tag "Get from:" %>
           <% unless params[:location].blank? %>
               <% if params[:location] == "All" %>
                   <%= select_tag "location",
@@ -21,7 +20,7 @@
           <% end %>
         </div>
         <div class="form-group">
-          <%= label_tag "Order:" %>
+          <%= label_tag "" %>
           <% if params[:order].blank? %>
               <%= select_tag "order", options_for_select(["Lastest", "Status" ],"Lastest"),
                             onchange: "this.form.submit();", class:"form-control" %>
@@ -34,4 +33,3 @@
           <% end %>
         </div>
     <% end %>
-</div>
