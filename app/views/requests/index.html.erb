@@ -27,3 +27,25 @@
 <div class="row">
   <%= render @requests %>
 </div>
+<div class="search-wrapper">
+  <div class="container-fluid pull-right">
+    <%= form_tag requests_path, method: :get do %>
+        <%= label_tag :search, "Search for:" %>
+        <% if params[:location] %>
+            <%= hidden_field_tag :location, params[:location] %>
+        <% end %>
+        <% if params[:order] %>
+            <%= hidden_field_tag :order, params[:order] %>
+        <% end %>
+        <%= text_field_tag(:search) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+  <div class="container-fluid">
+    <%= render "shared/filter" %>
+  </div>
+</div>
+<%= render @requests %>
+
+
+
