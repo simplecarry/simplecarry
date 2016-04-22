@@ -1,4 +1,5 @@
 class Request < ActiveRecord::Base
+  before_save :set_picture_url_default
   belongs_to :delivery_method
   belongs_to :selling_location, class_name: 'Location'
   belongs_to :delivery_location, class_name: 'Location'
@@ -159,6 +160,12 @@ class Request < ActiveRecord::Base
 
   def status_to_s
     self.status.capitalize.split('_').join(' ')
+  end
+
+  def set_picture_url_default
+    if picture_url.blank?
+      self.picture_url = "http://dummyimage.com/640/8f8f8f/ffffff"
+    end 
   end
 
   private
