@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :offers
   end
   resources :travel_plans
-
+  get '/manage/request' => 'manager#requests'
   get '/inbox' => 'inbox#show'
   root 'home#index'
   get '/trip' => 'trips#new'
