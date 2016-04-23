@@ -1,0 +1,48 @@
+<h2 class="text-center">Update Request</h2>
+<%= render 'new_request/form_error' %>
+<%= form_for @request do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "Item name" %>
+            <%= f.text_field :name, class:"form-control",
+          placeholder: "What do you want to buy?"%>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, "Item description"%>
+            <%= f.text_area :description, class:"form-control", 
+              placeholder:"Describe your item e.g. size, quantity, colour, packaging, how to buy" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :picture_url,"Picture(url)" %>
+            <%= f.text_field :picture_url,placeholder: "Optional", class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :links, "Link to item" %>
+            <%= f.text_field :links, placeholder: "Optional", class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :selling_location_id, "Country to buy from" %> <br>
+            <%= f.collection_select :selling_location_id, Location.all, :id, :name,{},
+              {class: "form-control"}%>
+          </div>
+          <div class="form-group">
+            <%= f.label :delivery_method_id, "Delivery option" %> <br>
+            <%= f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name,
+              {},{class: "form-control"}%>
+          </div>
+          <div class="form-group">
+            <%= f.label :offer_price %><br>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">VND</span>
+              <%= f.text_field :offer_price, class:"form-control" %>
+            </div>
+          </div>
+        <div class="text-center">
+          <%= button_tag(type: "submit", class: "btn btn-lg btn-primary", name: "commit", value: "conceal") do %>
+            Update
+            <span class="glyphicon glyphicon-chevron-right" 
+                  style = "color: white" aria-hidden="true"></span>
+        </div>
+
+      <% end %> 
+          
+<% end %>

@@ -9,6 +9,7 @@
               <th>Picture</th>
               <th>Request selling location</th>
               <th>Your offer price</th>
+              <th>Your return date</th>
               <th>Request status</th>
               <th>Options</th>
             </tr>
@@ -20,6 +21,7 @@
                 <td class="centered"><%= image_tag offer.request.picture_url, height: 64, width: 64 %></td>
                 <td><%= Location.find_by_id(offer.request.selling_location_id).name %></td>
                 <td><%= offer.price %> VND</td>
+                <td><%= offer.arrival_date.strftime("%d/%m/%Y") %></td>
                 <td class="centered" style="vertial-align: middle">
                     <h4>
                       <span class="label <%= status_color_for(offer.request.status_to_s) %>">
