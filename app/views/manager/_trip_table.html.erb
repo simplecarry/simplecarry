@@ -23,6 +23,11 @@
                      title: "Go to Location" do %>
                      <span class="glyphicon glyphicon-search"></span>
                    <% end %>
+                  <%= link_to edit_travel_plan_path(trip), class:"btn btn-default", 
+                    data: {toggle: "tooltip", placement: "top"},
+                     title: "Edit" do %>
+                     <span class="glyphicon glyphicon-pencil"></span>
+                   <% end %>
                    <%= link_to travel_plan_path(trip), method: :delete, 
                      class:"btn btn-default", 
                      data: {toggle: "tooltip", placement: "top", 

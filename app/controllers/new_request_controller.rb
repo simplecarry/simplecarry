@@ -35,6 +35,7 @@ class NewRequestController < ApplicationController
         @request.delivery_location_id =
         if @request.save
           send_new_request_notification
+          flash[:success] = "Successful to create new request"
           redirect_to root_path
         else
           render_wizard
