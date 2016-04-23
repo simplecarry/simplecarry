@@ -26,6 +26,21 @@ class RequestsController < ApplicationController
   def show
   end
 
+  def edit
+    @request = Request.find_by_id(params[:id])
+  end
+
+  def update
+    @request = Request.find_by_id(params[:id])
+    @request.check_validate = "active"
+    if @request.update(request_params)
+      flash[:success] = "Successful update the request"
+      redirect_to manage_request_path
+    else
+      render 'edit'
+    end
+  end
+
   def deposit
     begin
       @request.make_deposit(params[:stripe_token])
@@ -126,5 +141,9 @@ class RequestsController < ApplicationController
 
   def load_request
     @request = Request.find_by_id(params[:id])
+  end
+
+  def request_params
+    params.require(:request).permit!
   end
 end
