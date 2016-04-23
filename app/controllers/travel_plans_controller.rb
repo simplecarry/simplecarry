@@ -6,7 +6,7 @@ class TravelPlansController < ApplicationController
   def create
     @travel_plan = current_user.travel_plans.new(date_params)
     if @travel_plan.save
-      flash[:sucess] = "Your travel plan is addded successfully"
+      flash[:success] = "Your travel plan is addded successfully"
       redirect_to root_path
     else
       render "new"
@@ -15,6 +15,12 @@ class TravelPlansController < ApplicationController
 
   def index
     @locations = Location.have_request
+  end
+
+  def destroy
+    @travel_plan = TravelPlan.find_by_id(params[:id])
+    @travel_plan.destroy
+    redirect_to manage_trip_path
   end
 
   private
