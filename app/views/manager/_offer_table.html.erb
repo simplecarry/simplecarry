@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel">
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Request name</th>
+              <th>Picture</th>
+              <th>Request selling location</th>
+              <th>Your offer price</th>
+              <th>Request status</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @offers.each do |offer| %>
+              <tr>
+                <td><%= link_to offer.request.name, request_path(offer.request) %></td>
+                <td class="centered"><%= image_tag offer.request.picture_url, height: 64, width: 64 %></td>
+                <td><%= Location.find_by_id(offer.request.selling_location_id).name %></td>
+                <td><%= offer.price %> VND</td>
+                <td class="centered" style="vertial-align: middle">
+                    <h4>
+                      <span class="label <%= status_color_for(offer.request.status_to_s) %>">
+                        <%= offer.request.status_to_s %></span>
+                    </h4>
+                </td>
+                <td align="center" class="text-left">
+                  <%= link_to request_path(offer.request), class:"btn btn-default", 
+                    data: {toggle: "tooltip", placement: "top"},
+                     title: "Go to request" do %>
+                     <span class="glyphicon glyphicon-search"></span>
+                   <% end %>
+                  <%= link_to '#', class:"btn btn-default", 
+                    data: {toggle: "tooltip", placement: "top"},
+                     title: "Delete" do %>
+                     <span class="glyphicon glyphicon-remove"></span>
+                   <% end %>
+                 </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
