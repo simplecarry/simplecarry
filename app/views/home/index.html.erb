@@ -21,5 +21,13 @@
     <%end%>
 </div>
 
-<%= render @requests %>
+<% @requests.in_groups_of(3) do |group| %>
+    <div class="row">
+      <% group.each do |request| %>
+          <% if request %>
+            <%= render request %>
+          <% end %>
+      <% end %>
+    </div>
+<% end %>
 
