@@ -108,6 +108,7 @@ class RequestsController < ApplicationController
   end
 
   def send_deposit_notification
+    # notify inbox
     DepositNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
         content: "#{@request.requester.email} has deposited money for the request <a href='#{request_url(@request)}'>#{@request.id}</a>",
@@ -123,6 +124,8 @@ class RequestsController < ApplicationController
         receiver_id: @request.selected_offer.carrier_id,
         content: "You bought the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>",
         event_type: Request.statuses[:waiting_delivery])
+    
+    # notify inbox
     BuyItemNotification.create(
         receiver_id: @request.requester_id,
         content: "#{@request.selected_offer.carrier.email} bought the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>",
@@ -130,6 +133,7 @@ class RequestsController < ApplicationController
   end
 
   def send_deliver_item_notification
+    # notify inbox
     DeliverItemNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
         content: "You delivered the requested item <a href='#{request_url(@request)}'>##{@request.id}</a>",
@@ -142,6 +146,7 @@ class RequestsController < ApplicationController
 
   def send_cancel_request_notification
     if @request.selected_offer
+      # notify inbox
       CancelRequestNotification.create(
           receiver_id: @request.selected_offer.carrier_id,
           content: "The request #{@request.name} has been canceled")
@@ -155,12 +160,15 @@ class RequestsController < ApplicationController
     CancelOfferNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
         content: "You canceled your offer to help on <a href='#{request_url(@request)}'>##{@request.id}</a>")
+    
+    # notify inbox
     CancelOfferNotification.create(
         receiver_id: @request.requester_id,
         content: "#{@request.selected_offer.carrier.email} canceled his offer to help you on <a href='#{request_url(@request)}'>##{@request.id}</a>")
   end
 
   def send_reject_notification
+    # notify inbox
     RejectNotification.create(
         receiver_id: @request.selected_offer.carrier_id,
         content: "#{@request.requester.email} has rejected your offer on <a href='#{request_url(@request)}'>##{@request.id}</a>")
