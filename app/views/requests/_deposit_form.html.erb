@@ -14,7 +14,7 @@
 <!--BEGIN deposit dialog-->
 <div class="modal fade" id="deposit-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-md" role="document">
-    <form method="post" action="<%= deposit_request_path(@request) %>" id="deposit-form">
+    <form method="post" action="<%= deposit_request_path(@request) %>" id="deposit-form" data-remote="true">
       <%= token_tag %>
       <div class="modal-content">
         <div class="modal-header">

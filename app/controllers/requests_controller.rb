@@ -46,22 +46,45 @@ class RequestsController < ApplicationController
     begin
       @request.make_deposit(params[:stripe_token])
       send_deposit_notification
+
+      respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :show, id: params[:id]
+      }
+    end
     rescue Stripe::CardError => e
       flash[:error] = e.message
+
+      respond_to do |format|
+        format.js
+        format.html {
+          redirect_to action: :show, id: params[:id]
+        }
+      end
     end
-    redirect_to action: :show, id: params[:id]
   end
 
   def item_bought
     @request.item_bought
     send_buy_item_notification
-    redirect_to action: :show, id: params[:id]
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :show, id: params[:id]
+      }
+    end
   end
 
   def item_delivered
     @request.item_delivered
     send_deliver_item_notification
-    redirect_to action: :show, id: params[:id]
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :show, id: params[:id]
+      }
+    end
   end
 
   def cancel_request
