@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_action :load_request, only: [:show, :deposit, :item_bought,
                                       :item_delivered, :cancel_request,
-                                      :cancel_offer, :rate, :reject]
+                                      :cancel_offer, :rate, :reject,
                                       :cancel_request_manage, :cancel_offer, :rate]
   before_action :load_comment, only: [:show]
   before_action :load_request_by_id, only: [:edit, :update, :destroy]
