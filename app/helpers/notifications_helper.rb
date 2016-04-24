@@ -5,7 +5,8 @@ module NotificationsHelper
         message.instance_of?(DeliverItemNotification) ||
         message.instance_of?(CancelOfferNotification) ||
         message.instance_of?(CancelRequestNotification) ||
-        message.instance_of?(NewOfferNotification)
+        message.instance_of?(NewOfferNotification)||
+        message.instance_of?(RejectNotification)
       'System'
     end
   end

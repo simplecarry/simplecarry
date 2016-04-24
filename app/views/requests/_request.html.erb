@@ -1,20 +1,22 @@
  <div class="col-xs-4">
-<%= link_to request_path(request) do %>    
-  <div class="panel panel-default">
-    <div class="panel-thumbnail">
-     <%= image_tag request.picture_url, class: "img-responsive" %>
+<div class="turn_off_hover">
+  <%= link_to request_path(request) do %>    
+    <div class="panel panel-default">
+      <div class="panel-thumbnail">
+       <%= image_tag request.picture_url, class: "img-responsive" %>
+      </div>
+      <div class="panel-body">
+        <p class="lead"><%= request.name %></p>
+        <p><%= request.description %></p>
+        
+        <p>
+          <span class="label <%= status_color_for(request.status_to_s) %>">
+          <%= request.status_to_s %></span>
+        </p>
+      </div>
     </div>
-    <div class="panel-body">
-      <p class="lead"><%= request.name %></p>
-      <p><%= request.description %></p>
-      
-      <p>
-        <span class="label <%= status_color_for(request.status_to_s) %>">
-        <%= request.status_to_s %></span>
-      </p>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
   
 </div><!--/col-->

@@ -17,8 +17,6 @@ class Request < ActiveRecord::Base
   validates :name, presence: true, if: :active_or_item?
   validates :quantity, presence: true
   validates :status, presence: true
-  validates :picture_url, presence: true
-  validates :links, presence:true
 
   scope :ordered_by_status, -> { order('status ASC') }
 
@@ -42,7 +40,7 @@ class Request < ActiveRecord::Base
     Stripe.api_key = 'sk_test_Dpwz47km7ZMFxoJi1rb2ucrJ'
 
     charge = Stripe::Charge.create(
-        :amount => selected_offer.price,
+        :amount => (selected_offer.price + (selected_offer.price * 0.07 + 50000)).to_i,
         :currency => 'vnd',
         :source => stripe_token,
         :description => "Deposit for request #{id}"
@@ -110,6 +108,12 @@ class Request < ActiveRecord::Base
   end
 
   def cancel_offer
+    self.selected_offer.delete
+    self.status = :open
+    self.save
+  end
+
+  def reject
     self.selected_offer.delete
     self.status = :open
     self.save

@@ -3,3 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .centered { vertical-align:middle; text-align:center; }
 .centered img { display:block; margin:0 auto; }
+.turn_off_hover {
+  a:hover {
+    text-decoration: none;
+  }
+ }
