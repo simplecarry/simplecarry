@@ -17,6 +17,8 @@ class Request < ActiveRecord::Base
   validates :name, presence: true, if: :active_or_item?
   validates :quantity, presence: true
   validates :status, presence: true
+  validates :picture_url, presence: true
+  validates :links, presence:true
 
   scope :ordered_by_status, -> { order('status ASC') }
 
@@ -99,6 +101,7 @@ class Request < ActiveRecord::Base
 
   def cancel
     self.selected_offer.delete
+    self.comments.delete_all
     self.delete
   end
 
