@@ -17,7 +17,6 @@ class SocketBackend
 
       ws.on :message do |event|
         p [:message, event.data]
-        p @clients
         @clients.each {|client| client.send(event.data) }
       end
 
