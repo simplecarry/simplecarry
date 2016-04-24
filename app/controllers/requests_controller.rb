@@ -93,6 +93,7 @@ class RequestsController < ApplicationController
     redirect_to action: :show, id: params[:id]
   end
 
+
   private
 
   def load_comment

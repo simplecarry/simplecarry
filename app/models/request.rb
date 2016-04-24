@@ -42,7 +42,7 @@ class Request < ActiveRecord::Base
     Stripe.api_key = 'sk_test_Dpwz47km7ZMFxoJi1rb2ucrJ'
 
     charge = Stripe::Charge.create(
-        :amount => selected_offer.price,
+        :amount => (selected_offer.price + (selected_offer.price * 0.07 + 50000)).to_i,
         :currency => 'vnd',
         :source => stripe_token,
         :description => "Deposit for request #{id}"

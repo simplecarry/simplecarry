@@ -60,7 +60,11 @@
       <br/>
       <p>
         <span class="glyphicon glyphicon-tag"></span>
-        VND <%= @request.offer_price %>
+        <% if @request.open?%>
+            VND <%= @request.offer_price %>
+        <%else%>
+            VND <%= @request.selected_offer.price %>
+        <%end%>
       </p>
       <p>
         <%= friendly_status(@request) %>
