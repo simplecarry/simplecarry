@@ -11,16 +11,14 @@
                                               aria-expanded="false">
             Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
+            <li><a class="nav-link" href="/new_request">New request</a></li>
+            <li><a class="nav-link" href="<%= new_travel_plan_path %>">New Travel Plan</a></li>
+            <li role="separator" class="divider"></li>
             <li><%= link_to 'Your requests and offers', '/manage/request', 
               class:"nav-link" %></li>
             <li><%= link_to 'Your trips', '/manage/trip', 
               class:"nav-link" %></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= new_travel_plan_path %>">New Travel Plan</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%= inbox_path %>">Inbox</a>
