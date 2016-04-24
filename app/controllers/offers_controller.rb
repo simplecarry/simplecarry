@@ -5,6 +5,11 @@ class OffersController < ApplicationController
     @request.new_offer(current_user, params[:price], params[:arrival_date])
     if @request.errors.empty?
       send_new_offer_notification
+      
+      respond_to do |format|
+
+        
+      end
     else
       flash[:error] = "Unable to create offer"
     end

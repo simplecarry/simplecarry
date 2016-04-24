@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
-    p ['DEBUG', params[:comment][:request_id]]
     @request = Request.find params[:comment][:request_id]
     if @comment.save
       respond_to do |format|

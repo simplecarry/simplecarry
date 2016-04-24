@@ -19,35 +19,38 @@ window.ws.onmessage = function (message) {
 
     default:
       console.log("unknown event", data.event);
+      break;
   }    
 };
 
 function addComment(data) {
   console.log('addComment');
-  $(data.content).hide().appendTo('.commentList').slideDown();
+  if (data.request_id == $('#request_id').text().trim()) {
+    $(data.content).hide().appendTo('.commentList').slideDown();
+  }  
 }
 
 function notifyInbox(data) {
   console.log('notifyInbox');
-    
+
   if (! $('#nav-inbox-link').has('#notification-icon').length) {
     // It has that element
-    var icon = '<span id="notification-icon" class="glyphicon glyphicon-heart" aria-hidden="true"></span>';
+    var icon = '<span id="notification-icon" class="glyphicon glyphicon-bell" aria-hidden="true"></span>';
     $('#nav-inbox-link').append(icon);
   }
 }
 
 // see: https://github.com/rails/jquery-ujs/wiki/ajax
-function setupForm() {
-  $("form#new_comment").on('ajax:success', function (event, data, success, xhr) {
-    $('input#comment_content').val('');
-  }).on('ajax:error', function (event, xhr, status, error) {
-    // this is useful for network issues or server errors
-    // e.g. try using message.save!
-    alert("Couldn't send the message. Try again later.");
-  });
-}
+// function setupForm() {
+//   $("form#new_comment").on('ajax:success', function (event, data, success, xhr) {
+//     $('input#comment_content').val('');
+//   }).on('ajax:error', function (event, xhr, status, error) {
+//     // this is useful for network issues or server errors
+//     // e.g. try using message.save!
+//     alert("Couldn't send the message. Try again later.");
+//   });
+// }
 
-$(document).on("page:change", function () {
-  setupForm();
-});
+// $(document).on("page:change", function () {
+//   setupForm();
+// });
