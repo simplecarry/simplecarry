@@ -2,7 +2,8 @@ class RequestsController < ApplicationController
   before_action :load_request, only: [:show, :deposit, :item_bought,
                                       :item_delivered, :cancel_request,
                                       :cancel_offer, :rate, :reject,
-                                      :cancel_request_manage, :cancel_offer, :rate]
+                                      :cancel_request_manage, :cancel_offer, 
+                                      :cancel_offer_manage, :rate]
   before_action :load_comment, only: [:show]
   before_action :load_request_by_id, only: [:edit, :update, :destroy]
   before_action :check_user_edit, only: [:edit, :update]
@@ -88,10 +89,17 @@ class RequestsController < ApplicationController
     redirect_to action: :show, id: params[:id]
   end
 
+  def cancel_offer_manage
+    @request.cancel_offer
+    send_cancel_offer_notification
+    redirect_to manage_request_path
+  end
+
   def rate
     @request.review(current_user, params[:rating])
     redirect_to action: :show, id: params[:id]
   end
+
 
   private
 

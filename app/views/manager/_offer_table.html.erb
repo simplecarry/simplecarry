@@ -34,10 +34,13 @@
                      title: "Go to request" do %>
                      <span class="glyphicon glyphicon-search"></span>
                    <% end %>
-                  <%= link_to '#', class:"btn btn-default", 
-                    data: {toggle: "tooltip", placement: "top"},
-                     title: "Delete" do %>
-                     <span class="glyphicon glyphicon-remove"></span>
+                   <%= form_tag cancel_offer_manage_request_path(offer.request), 
+                     method: "post", class: "inline" do%>
+                    <%= button_tag(type: "submit", class: "btn btn-default", 
+                      data: {toggle: "tooltip", placement: "top", confirm: "Are you sure?"},
+                      title: "Cancel") do %>
+                     <span class="glyphicon glyphicon-trash"></span>
+                    <% end %>
                    <% end %>
                  </td>
               </tr>
