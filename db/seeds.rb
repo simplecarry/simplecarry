@@ -1,4 +1,4 @@
-[Offer, Request, User, DeliveryMethod, Location].each(&:delete_all)
+[Comment, Offer, Request, User, DeliveryMethod, Location].each(&:delete_all)
 
 saigon = Location.create(:name => 'Ho Chi Minh', picture_url:"http://4.bp.blogspot.com/-Mgl1mtLgPxc/UWVsHyG_GUI/AAAAAAAAEjE/sY6I4hOIVHU/s640/8578367947_f413292328_o.jpg")
 sing = Location.create(:name => 'Singapore', picture_url:"https://d8hh9kinq36uh.cloudfront.net/Singapore@2x.jpg")
