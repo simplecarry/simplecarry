@@ -11,6 +11,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<span id="user-id" style="display: none;">
+  <%= current_user.id %>
+</span>
+
 <%= render 'layouts/header' %>
 <div class="container">
   <%= yield %>

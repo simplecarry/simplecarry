@@ -7,13 +7,20 @@ class OffersController < ApplicationController
       send_new_offer_notification
       
       respond_to do |format|
-
-        
+        format.js
+        format.html {
+          redirect_to request_path(@request)
+        }
       end
     else
       flash[:error] = "Unable to create offer"
+      respond_to do |format|
+        format.js
+        format.html {
+          redirect_to request_path(@request)
+        }
+      end
     end
-    redirect_to request_path(@request)
   end
 
   private

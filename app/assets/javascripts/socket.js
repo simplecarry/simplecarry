@@ -13,7 +13,7 @@ window.ws.onmessage = function (message) {
       addComment(data);
       break;
 
-    case 'notify_inbox':
+    case 'notification_create':
       notifyInbox(data);
       break;
 
@@ -25,7 +25,8 @@ window.ws.onmessage = function (message) {
 
 function addComment(data) {
   console.log('addComment');
-  if (data.request_id == $('#request_id').text().trim()) {
+
+  if (data.request_id == $('#request-id').text().trim()) {
     $(data.content).hide().appendTo('.commentList').slideDown();
   }  
 }
@@ -33,8 +34,12 @@ function addComment(data) {
 function notifyInbox(data) {
   console.log('notifyInbox');
 
+  if (data.receiver_id != $('#user-id').text().trim()) {
+    return;
+  }
+
   if (! $('#nav-inbox-link').has('#notification-icon').length) {
-    // It has that element
+    // doesn't have the icon yet
     var icon = '<span id="notification-icon" class="glyphicon glyphicon-bell" aria-hidden="true"></span>';
     $('#nav-inbox-link').append(icon);
   }
