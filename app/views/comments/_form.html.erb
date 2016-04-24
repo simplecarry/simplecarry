@@ -5,7 +5,7 @@
           src=<%= current_user.avatar%>>
       </div>
       <div class="col-xs-10 ">
-        <%= form_for Comment.new, url:comments_path,
+        <%= form_for Comment.new, remote: true, method: :post, url: comments_path,
           html: {class: "form center"} do |f| %>
           <%= f.hidden_field :request_id, :value => @request.id %>
           <%= f.text_area :content, class:"form-control" %>

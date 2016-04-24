@@ -24,3 +24,6 @@ module Simplecarry
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+require 'socket_backend'
+Rails.configuration.middleware.insert_before Rack::Sendfile, SocketBackend

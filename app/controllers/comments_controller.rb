@@ -1,13 +1,27 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
-    @request = Request.find_by_id(params[:comment][:request_id])
+    @request = Request.find params[:comment][:request_id]
     if @comment.save
-      flash[:success] = "Your comment is created"
-      redirect_to request_path(@request)
+      respond_to do |format|
+        format.js {
+          flash[:success] = "Your comment is created"
+        }
+        format.html {
+          flash[:success] = "Your comment is created"
+          redirect_to request_path(@request)
+        }
+      end
     else
-      flash[:error] = "Your comment is too short (minimum is 5 characters)"
-      redirect_to request_path(@request)
+      respond_to do |format|
+        format.js {
+          flash[:error] = "Your comment is too short (minimum is 5 characters)"
+        }
+        format.html {
+          flash[:error] = "Your comment is too short (minimum is 5 characters)"
+          redirect_to request_path(@request)
+        }
+      end
     end
   end
   private

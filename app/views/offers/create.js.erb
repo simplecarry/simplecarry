@@ -1,0 +1,6 @@
+$('.flash-messages').append('<%= flash_messages(@request) %>');
+
+<% if @request.errors.empty? %>
+	window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '<%= @request.requester_id %>' }));
+	window.location.href = '<%= request_path(@request) %>';  
+<% end %>
