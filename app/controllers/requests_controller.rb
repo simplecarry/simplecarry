@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   before_action :load_request, only: [:show, :deposit, :item_bought,
                                       :item_delivered, :cancel_request,
                                       :cancel_offer, :rate, :reject]
+                                      :cancel_request_manage, :cancel_offer, :rate]
   before_action :load_comment, only: [:show]
   before_action :load_request_by_id, only: [:edit, :update, :destroy]
   before_action :check_user_edit, only: [:edit, :update]
@@ -40,12 +41,6 @@ class RequestsController < ApplicationController
     end
   end
 
-  def destroy
-   flash[:success] = "Successful remove request"
-   @request.destroy
-   redirect_to manage_request_path
-  end
-
   def deposit
     begin
       @request.make_deposit(params[:stripe_token])
@@ -72,6 +67,13 @@ class RequestsController < ApplicationController
     @request.cancel
     send_cancel_request_notification
     redirect_to action: :index
+  end
+
+  def cancel_request_manage
+    flash[:success] = "Successful cancel request"
+    @request.cancel
+    send_cancel_request_notification
+    redirect_to manage_request_path
   end
 
   def reject

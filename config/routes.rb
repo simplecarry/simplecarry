@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post 'cancel_request'
       post 'cancel_offer'
       post 'reject'
+      post 'cancel_request_manage'
       post 'rate'
     end
     resources :offers

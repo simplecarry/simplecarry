@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-    <h3>
-      <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
-      Request #<%= @request.id %>
-    </h3>
+    <div class="col-md-5 col-md-offset-1">
+      <h3>
+        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+        Request #<%= @request.id %>
+      </h3>
+    </div>
   </div>
 
   <div class="row">
@@ -40,13 +42,13 @@
         <span class="glyphicon glyphicon-map-marker"></span>
         Shop in <%= @request.selling_location.name %>
       </p>
-      <% if @request.delivery_location%>
-      <br/>
-      <p>
-        <span class="glyphicon glyphicon-map-marker"></span>
-        Deal in <%= @request.delivery_location.name %>
-      </p>
-      <%end%>
+      <% if @request.delivery_location %>
+          <br/>
+          <p>
+            <span class="glyphicon glyphicon-map-marker"></span>
+            Deal in <%= @request.delivery_location.name %>
+          </p>
+      <% end %>
       <h5><%= @request.delivery_method.name %></h5>
       <p><%= @request.delivery_method.description %></p>
       <% if @request.links %>
