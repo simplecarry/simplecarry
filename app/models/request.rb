@@ -111,6 +111,12 @@ class Request < ActiveRecord::Base
     self.save
   end
 
+  def reject
+    self.selected_offer.delete
+    self.status = :open
+    self.save
+  end
+
   def can_give_review?(user)
     self.completed? && (can_give_requester_review?(user) || can_give_helper_review?(user))
   end
