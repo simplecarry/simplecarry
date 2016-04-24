@@ -3,7 +3,8 @@ class RequestsController < ApplicationController
                                       :item_delivered, :cancel_request,
                                       :cancel_offer, :rate]
   before_action :load_comment, only: [:show]
-
+  before_action :load_request_by_id, only: [:edit, :update, :destroy]
+  before_action :check_user_edit, only: [:edit, :update]
   def index
     @requests = Request.all
     unless params[:location].blank? || params[:location] == "All"
@@ -24,6 +25,25 @@ class RequestsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @request.check_validate = "active"
+    if @request.update(request_params)
+      flash[:success] = "Successful update the request"
+      redirect_to manage_request_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+   flash[:success] = "Successful remove request"
+   @request.destroy
+   redirect_to manage_request_path
   end
 
   def deposit
@@ -126,5 +146,20 @@ class RequestsController < ApplicationController
 
   def load_request
     @request = Request.find_by_id(params[:id])
+  end
+
+  def request_params
+    params.require(:request).permit!
+  end
+
+  def check_user_edit
+    if current_user != Request.find_by_id(params[:id]).requester
+      flash[:error] = "You can't edit request of other people"
+      redirect_to root_path
+    end
+  end
+
+  def load_request_by_id
+   @request = Request.find_by_id(params[:id])
   end
 end

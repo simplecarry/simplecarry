@@ -101,6 +101,7 @@ class Request < ActiveRecord::Base
 
   def cancel
     self.selected_offer.delete
+    self.comments.delete_all
     self.delete
   end
 
