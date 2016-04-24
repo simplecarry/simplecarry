@@ -6,7 +6,7 @@
         data-toggle="modal" data-target="#deposit-modal">
   Deposit Money
 </button>
-<form method="post" action="<%= reject_request_path(@request) %>" class="btn-form">
+<form method="post" action="<%= reject_request_path(@request) %>" class="btn-form"  data-remote="true">
   <%= token_tag %>
   <button type="submit" class="btn btn-danger">Reject Offer</button>
 </form>

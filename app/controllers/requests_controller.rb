@@ -80,7 +80,13 @@ class RequestsController < ApplicationController
   def reject
     @request.reject
     send_reject_notification
-    redirect_to action: :show, id: params[:id]
+
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :show, id: params[:id]
+      }
+    end
   end
 
   def cancel_offer
