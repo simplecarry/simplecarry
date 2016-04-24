@@ -44,10 +44,10 @@ function notifyInbox(data) {
     $('#nav-inbox-link').append(icon);
   }
 
-  if (data.redirect_to) {
-    console.log('redirect to ' + data.redirect_to);
-    window.location.href = data.redirect_to;
-  }
+  // if (data.redirect_to) {
+  //   console.log('redirect to ' + data.redirect_to);
+  //   window.location.href = data.redirect_to;
+  // }
 }
 
 // see: https://github.com/rails/jquery-ujs/wiki/ajax

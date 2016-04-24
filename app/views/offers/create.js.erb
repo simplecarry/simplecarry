@@ -1,8 +1,6 @@
 $('.flash-messages').append('<%= flash_messages(@request) %>');
 
-alert('<%= @request.errors.full_messages %>');
-
 <% if @request.errors.empty? %>
-  window.ws.send(JSON.stringify({ redirect_to: '<%= request_path(@request) %>', event: 'notification_create', receiver_id: '<%= @request.selected_offer.carrier_id %>' }));
-  window.ws.send(JSON.stringify({ redirect_to: '<%= request_path(@request) %>', event: 'notification_create', receiver_id: '<%= @request.requester_id %>' }));
+	window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '<%= @request.requester_id %>' }));
+	window.location.href = '<%= request_path(@request) %>';  
 <% end %>

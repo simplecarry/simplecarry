@@ -10,7 +10,7 @@
         </button>
         <div class="modal fade" id="offer-modal" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-sm" role="document">
-            <form method="post" action="<%= request_offers_path(@request) %>">
+            <form method="post" action="<%= request_offers_path(@request) %>" data-remote="true">
               <%= token_tag %>
               <div class="modal-content">
                 <div class="modal-header">

@@ -13,7 +13,9 @@
 <body>
 
 <span id="user-id" style="display: none;">
-  <%= current_user.id %>
+  <% if user_signed_in? %>
+    <%= current_user.id %>
+  <% end %>
 </span>
 
 <%= render 'layouts/header' %>
