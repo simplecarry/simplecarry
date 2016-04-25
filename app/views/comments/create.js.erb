@@ -1,6 +1,7 @@
-$('.flash-messages').append('<%= flash_messages(@request) %>');
+$('.flash-messages').empty().append('<%= flash_messages(@request) %>');
 
 <% if @comment.errors.empty? %>
+  $('#comment_content').val('');
   var content = "<%= j render @comment %>";
   window.ws.send(JSON.stringify({ content: content, event: 'comment_create', request_id: '<%= @request.id %>' }));
 <% end %>
