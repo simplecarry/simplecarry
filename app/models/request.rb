@@ -175,7 +175,7 @@ class Request < ActiveRecord::Base
 
   def set_picture_url_default
     if picture_url.blank?
-      self.picture_url = "http://dummyimage.com/640/8f8f8f/ffffff"
+      self.picture_url = "http://i.imgur.com/6uH6x3B.jpg"
     end 
   end
 

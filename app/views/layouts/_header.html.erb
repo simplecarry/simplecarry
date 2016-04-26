@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default bg-faded">
+<nav class="navbar navbar-default bg-faded" id="navlink">
   <a href="/"><img class="navbar-brand" src="/easycarry6.png"></a>
   <ul class="nav navbar-nav pull-right">
     <li class="nav-item">
@@ -24,9 +24,6 @@
           <a id='nav-inbox-link' class="nav-link" href="<%= inbox_path %>">Inbox </a>
         </li>
     <% end %>
-    <li class="nav-item">
-      <a class="nav-link" href="#about-us">About Us</a>
-    </li>
     <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
@@ -34,10 +31,7 @@
     <% end %>
     <% if not user_signed_in? %>
         <li class="nav-item">
-          <a class="nav-link" href="<%= new_user_session_path %>">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= new_user_registration_path %>">Register</a>
+          <a class="nav-link" href="<%= new_user_session_path %>">Login/Register</a>
         </li>
     <% end %>
   </ul>

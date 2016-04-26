@@ -3,6 +3,7 @@
 @import "credit-card";
 @import "comments";
 @import "requests";
+
 .container {
   margin-top: 80px;
 }
@@ -86,38 +87,49 @@
   background: #0D47A1;
 }
 
-.nav-link{
+.nav-link {
   color: white;
 }
 
-body{
+body {
   color: #0D47A1;
 }
 
-.form-inline{
+.form-inline {
   margin-bottom: 20px;
 }
 
-h1{
+h1 {
   font-size: 60px;
 }
 
-.navbar-default .navbar-nav > li > a{
+.navbar-default .navbar-nav > li > a {
   color: #fff;
 }
 
-.search-wrapper{
+.search-wrapper {
   padding-bottom: 20px;
 }
 
-.img-responsive{
+.img-responsive {
   margin: auto;
 }
 
-.input-group{
+.input-group {
   margin-bottom: 20px;
 }
 
-.credit-card-box .display-td{
+.credit-card-box .display-td {
   width: 80%;
+}
+
+#navlink {
+  &.navbar {
+    .nav-item, .dropdown {
+      &:hover {
+        background-color: #42A5F5;
+      }
+    }
+  }
+
 }
