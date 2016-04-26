@@ -6,13 +6,28 @@
        <%= image_tag request.picture_url, class: "img-responsive" %>
       </div>
       <div class="panel-body">
-        <p class="lead"><%= request.name %></p>
-        <p><%= request.description %></p>
+        <p class="lead text-center"><%= request.name %></p>
         
-        <p>
+        <h4 class="text-center">
           <span class="label <%= status_color_for(request.status_to_s) %>">
           <%= request.status_to_s %></span>
-        </p>
+        </h4>
+        <div class="panel-footer">
+          <table>
+            <tbody>
+              <td style="padding-right:10px">
+                <%= image_tag request.requester.avatar, class: "avatar img-circle"%>
+              </td>
+              <td style="padding-top:5px">
+                <p>
+                  Buy in <%= request.selling_location.name %>
+                  <br>
+                  Willing to pay <%= request.offer_price %> VND
+                </p>
+              </td>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   <% end %>
