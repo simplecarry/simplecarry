@@ -35,7 +35,7 @@
                      <span class="glyphicon glyphicon-search"></span>
                    <% end %>
                    <%= form_tag cancel_offer_manage_request_path(offer.request), 
-                     method: "post", class: "inline" do%>
+                     method: "post", class: "inline", remote: true do %>
                     <%= button_tag(type: "submit", class: "btn btn-default", 
                       data: {toggle: "tooltip", placement: "top", confirm: "Are you sure?"},
                       title: "Cancel") do %>

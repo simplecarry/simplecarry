@@ -90,16 +90,34 @@ class RequestsController < ApplicationController
   end
 
   def cancel_request
+    @receiver_id = @request.selected_offer.carrier_id
+
     @request.cancel
     send_cancel_request_notification
-    redirect_to action: :index
+
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :index
+      }
+    end
   end
 
   def cancel_request_manage
-    flash[:success] = "Successful cancel request"
+    @receiver_id = @request.selected_offer.carrier_id
+
     @request.cancel
     send_cancel_request_notification
-    redirect_to manage_request_path
+
+    respond_to do |format|
+      format.js {
+        flash[:success] = "Successful cancel request"
+      }
+      format.html {
+        flash[:success] = "Successful cancel request"
+        redirect_to manage_request_path
+      }
+    end
   end
 
   def reject
@@ -117,13 +135,25 @@ class RequestsController < ApplicationController
   def cancel_offer
     @request.cancel_offer
     send_cancel_offer_notification
-    redirect_to action: :show, id: params[:id]
+
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :show, id: params[:id]
+      }
+    end
   end
 
   def cancel_offer_manage
     @request.cancel_offer
     send_cancel_offer_notification
-    redirect_to manage_request_path
+
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to manage_request_path
+      }
+    end
   end
 
   def rate
@@ -135,7 +165,9 @@ class RequestsController < ApplicationController
   private
 
   def cheat_web_socket_by_huy
-    @huy_socket = "window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '#{ @request.selected_offer.carrier_id }' }))";
+    if !!@request.selected_offer
+      @huy_socket = "window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '#{ @request.selected_offer.carrier_id }' }))";
+    end
   end
 
   def load_comment
