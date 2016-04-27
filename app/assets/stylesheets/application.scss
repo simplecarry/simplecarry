@@ -5,7 +5,11 @@
 @import "requests";
 
 .container {
-  margin-top: 80px;
+   /*margin-top: 80px; */
+}
+
+.alert {
+  margin-bottom: 20px;
 }
 
 .footer {
@@ -147,6 +151,6 @@ h1 {
 .body-container{
   background-image: url("../sky.jpg");
   height: 220px;
-  margin-top: -80px;
+  /*margin-top: -80px;*/
   color: #ffffff !important;
 }
