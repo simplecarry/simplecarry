@@ -7,6 +7,8 @@ class RequestsController < ApplicationController
   before_action :load_comment, only: [:show]
   before_action :load_request_by_id, only: [:edit, :update, :destroy]
   before_action :check_user_edit, only: [:edit, :update]
+  before_action :cheat_web_socket_by_huy
+  
   def index
     @requests = Request.all
     unless params[:location].blank? || params[:location] == "All"
@@ -42,17 +44,17 @@ class RequestsController < ApplicationController
     end
   end
 
-  def deposit
+  def deposit    
     begin
       @request.make_deposit(params[:stripe_token])
       send_deposit_notification
 
       respond_to do |format|
-      format.js
-      format.html {
-        redirect_to action: :show, id: params[:id]
-      }
-    end
+        format.js
+        format.html {
+          redirect_to action: :show, id: params[:id]
+        }
+      end
     rescue Stripe::CardError => e
       flash[:error] = e.message
 
@@ -131,6 +133,10 @@ class RequestsController < ApplicationController
 
 
   private
+
+  def cheat_web_socket_by_huy
+    @huy_socket = "window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '#{ @request.selected_offer.carrier_id }' }))";
+  end
 
   def load_comment
     @comments = @request.comments
