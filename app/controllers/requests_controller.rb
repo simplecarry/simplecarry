@@ -7,6 +7,8 @@ class RequestsController < ApplicationController
   before_action :load_comment, only: [:show]
   before_action :load_request_by_id, only: [:edit, :update, :destroy]
   before_action :check_user_edit, only: [:edit, :update]
+  before_action :cheat_web_socket_by_huy
+  
   def index
     @requests = Request.all
     unless params[:location].blank? || params[:location] == "All"
@@ -42,17 +44,17 @@ class RequestsController < ApplicationController
     end
   end
 
-  def deposit
+  def deposit    
     begin
       @request.make_deposit(params[:stripe_token])
       send_deposit_notification
 
       respond_to do |format|
-      format.js
-      format.html {
-        redirect_to action: :show, id: params[:id]
-      }
-    end
+        format.js
+        format.html {
+          redirect_to action: :show, id: params[:id]
+        }
+      end
     rescue Stripe::CardError => e
       flash[:error] = e.message
 
@@ -88,16 +90,34 @@ class RequestsController < ApplicationController
   end
 
   def cancel_request
+    @receiver_id = @request.selected_offer.carrier_id
+
     @request.cancel
     send_cancel_request_notification
-    redirect_to action: :index
+
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :index
+      }
+    end
   end
 
   def cancel_request_manage
-    flash[:success] = "Successful cancel request"
+    @receiver_id = @request.selected_offer.carrier_id
+
     @request.cancel
     send_cancel_request_notification
-    redirect_to manage_request_path
+
+    respond_to do |format|
+      format.js {
+        flash[:success] = "Successful cancel request"
+      }
+      format.html {
+        flash[:success] = "Successful cancel request"
+        redirect_to manage_request_path
+      }
+    end
   end
 
   def reject
@@ -115,13 +135,25 @@ class RequestsController < ApplicationController
   def cancel_offer
     @request.cancel_offer
     send_cancel_offer_notification
-    redirect_to action: :show, id: params[:id]
+
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to action: :show, id: params[:id]
+      }
+    end
   end
 
   def cancel_offer_manage
     @request.cancel_offer
     send_cancel_offer_notification
-    redirect_to manage_request_path
+
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to manage_request_path
+      }
+    end
   end
 
   def rate
@@ -131,6 +163,12 @@ class RequestsController < ApplicationController
 
 
   private
+
+  def cheat_web_socket_by_huy
+    if !!@request.selected_offer
+      @huy_socket = "window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '#{ @request.selected_offer.carrier_id }' }))";
+    end
+  end
 
   def load_comment
     @comments = @request.comments

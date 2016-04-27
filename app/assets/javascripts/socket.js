@@ -1,27 +1,37 @@
-var scheme = location.protocol == 'http:' ? "ws://" : "wss://";
-var uri    = scheme + window.document.location.host + "/";
-window.ws  = new WebSocket(uri);
+$(window).on('beforeunload', function(){
+    if (window.ws) {
+      window.ws.close();
+    }
+});
 
-console.log("socket initiated");
+$(window).ready(setupSocket);
 
-window.ws.onmessage = function (message) {
-  console.log("received: ", message);
-  data = JSON.parse(message.data);
-  switch (data.event) {
-    // append the new comment html content
-    case 'comment_create': 
-      addComment(data);
-      break;
+function setupSocket() {
+  var scheme = location.protocol == 'http:' ? "ws://" : "wss://";
+  var uri    = scheme + window.document.location.host + "/";
+  window.ws  = new WebSocket(uri);
 
-    case 'notification_create':
-      notifyInbox(data);
-      break;
+  console.log("socket initiated");
 
-    default:
-      console.log("unknown event", data.event);
-      break;
-  }    
-};
+  window.ws.onmessage = function (message) {
+    console.log("received: ", message);
+    data = JSON.parse(message.data);
+    switch (data.event) {
+      // append the new comment html content
+      case 'comment_create': 
+        addComment(data);
+        break;
+
+      case 'notification_create':
+        notifyInbox(data);
+        break;
+
+      default:
+        console.log("unknown event", data.event);
+        break;
+    }    
+  };
+}
 
 function addComment(data) {
   console.log('addComment');

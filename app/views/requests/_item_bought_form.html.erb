@@ -3,7 +3,7 @@
   <%= token_tag %>
   <button type="submit" class="btn btn-success">Item Bought</button>
 </form>
-<form method="post" action="<%= cancel_offer_request_path(@request) %>" class="btn-form">
+<form method="post" action="<%= cancel_offer_request_path(@request) %>" class="btn-form" data-remote="true">
   <%= token_tag %>
   <button type="submit" class="btn btn-danger">Cancel Offer</button>
 </form>
