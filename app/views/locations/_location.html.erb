@@ -1,12 +1,23 @@
  <div class="col-xs-12 col-sm-6">
-   <%= link_to requests_path(location: "#{location.name}") do %>    
-      <div class="panel panel-default">
-        <div class="panel-thumbnail">
-        <%= image_tag location.picture_url, class: "img-responsive" %>
+   <div class="turn_off_hover">
+     <%= link_to requests_path(location: "#{location.name}") do %>    
+        <div class="panel panel-default">
+          <div class="panel-thumbnail">
+          <%= image_tag location.picture_url, class: "img-responsive" %>
+          </div>
+          <div class="panel-body">
+            <h3 class="text-center"><%= location.name %></h3>
+            <p class="text-center">
+              Requests:
+              <span class="label label-success">
+              <%= location.open_requests_count %> OPEN</span>
+              <span class="label label-warning">
+              <%= location.pending_requests_count %> Pending</span>
+              <span class="label label-primary">
+              <%= location.completed_requests_count %> COMPLETED</span>
+            </p>
+          </div>
         </div>
-        <div class="panel-body">
-          <p class="lead"><%= location.name %></p>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+   </div>
  </div>

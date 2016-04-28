@@ -24,7 +24,7 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2015-08-24_51222.6184997519.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user2,
@@ -35,7 +35,7 @@ Request.create(
     delivery_method_id: whitehouse.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-03-23_92864.7570336483.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user3,
@@ -46,7 +46,7 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-04-27_97964.5172418102.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user1,
@@ -57,7 +57,7 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-04-27_12575327405190.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user2,
@@ -68,7 +68,7 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-04-27_96398887618255.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user3,
@@ -79,7 +79,7 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-01-14_61871.2960236356.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user1,
@@ -90,7 +90,7 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-04-27_71978.524232138.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user2,
@@ -101,7 +101,7 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-04-28_62614.436681838.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
 Request.create(
     requester: user4,
@@ -112,5 +112,5 @@ Request.create(
     delivery_method_id: home.id,
     picture_url: 'https://d8hh9kinq36uh.cloudfront.net/2016-04-28_21918.2885761865.jpg',
     quantity: 10,
-    offer_price: Faker::Number.number(8)
+    offer_price: Faker::Number.number(3)
 )
