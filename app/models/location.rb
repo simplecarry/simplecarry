@@ -33,4 +33,20 @@ class Location < ActiveRecord::Base
     requests.where("status = ?", 4).size
   end
 
+  def traveller
+    trips = TravelPlan.where("location_id = ?", id)
+    travellers = []
+    trips.each do |trip|
+      if trip.return_date > Time.now
+        travellers << trip
+      end
+    end
+    travellers
+  end
+
+  def earliest_return_date
+    array = traveller.map( &:return_date )
+    array.min.strftime("%d %b %Y")
+  end
+
 end

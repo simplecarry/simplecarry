@@ -16,6 +16,14 @@
               <span class="label label-primary">
               <%= location.completed_requests_count %> COMPLETED</span>
             </p>
+            <p class="text-center">
+              <% if location.traveller.size > 0 %>
+                <%= pluralize(location.traveller.size, "traveller") %>
+               (Earliest return date: <%= location.earliest_return_date %>)
+              <% else %>
+                <%= pluralize(location.traveller.size, "traveller") %>
+              <% end %>
+            </p>
           </div>
         </div>
       <% end %>
