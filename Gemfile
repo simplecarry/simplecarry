@@ -31,6 +31,9 @@ gem 'wicked'
 # Using for search case-insensitive
 gem "squeel" 
 
+# faker
+gem "faker"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
