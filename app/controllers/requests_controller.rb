@@ -165,8 +165,10 @@ class RequestsController < ApplicationController
   private
 
   def cheat_web_socket_by_huy
-    if !!@request.selected_offer
-      @huy_socket = "window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '#{ @request.selected_offer.carrier_id }' }))";
+    if !!@request
+      if !!@request.selected_offer
+        @huy_socket = "window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '#{ @request.selected_offer.carrier_id }' }))";
+      end
     end
   end
 
