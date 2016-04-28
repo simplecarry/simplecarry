@@ -1,4 +1,4 @@
-$('.flash-messages').append('<%= flash_messages(@request) %>');
+$('.flash-messages').empty().append('<%= flash_messages(@request) %>');
 
 <% if @request.errors.empty? %>
 	window.ws.send(JSON.stringify({ event: 'notification_create', receiver_id: '<%= @request.selected_offer.carrier_id %>' }));

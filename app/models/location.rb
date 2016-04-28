@@ -21,4 +21,16 @@ class Location < ActiveRecord::Base
     location_have_request
   end
 
+  def open_requests_count
+    requests.where("status = ?", 0).size
+  end
+
+  def pending_requests_count
+    requests.where("status = ?", 1).size
+  end
+
+  def completed_requests_count
+    requests.where("status = ?", 4).size
+  end
+
 end

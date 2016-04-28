@@ -17,7 +17,8 @@ class Request < ActiveRecord::Base
   validates :name, presence: true, if: :active_or_item?
   validates :quantity, presence: true
   validates :status, presence: true
-
+  
+  default_scope { order(created_at: :desc ) }
   scope :ordered_by_status, -> { order('status ASC') }
 
   enum status: [:open, :pending_deposit, :deposited, :waiting_delivery, :completed]
